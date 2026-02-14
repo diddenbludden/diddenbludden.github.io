@@ -1,251 +1,271 @@
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>80he - Straftard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        'card-bg': 'rgba(255, 255, 255, 0.03)',
-                        'card-border': 'rgba(255, 255, 255, 0.05)',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #050505;
-            color: #ffffff;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>80he - Straftard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-        .bento-card {
-            background: rgba(28, 28, 30, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            'card-bg': 'rgba(255, 255, 255, 0.03)',
+            'card-border': 'rgba(255, 255, 255, 0.05)',
+          }
         }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      color: #ffffff;
+    }
+
+    .bento-card {
+      background: rgba(28, 28, 30, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
 </head>
 
 <body class="antialiased selection:bg-purple-500/30 selection:text-purple-200">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="../index.html"
-                class="text-white text-lg font-bold tracking-tight hover:opacity-70 transition-opacity">
-                80he.
-            </a>
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="text-white text-lg font-bold tracking-tight hover:opacity-70 transition-opacity">
+        80he.
+      </a>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-6 pt-32 pb-20">
+
+    <!-- Back Button -->
+    <a href="../projects.html" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-white transition-colors mb-12 group">
+      <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+      Back to projects
+    </a>
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row items-start gap-8 mb-16">
+      <div class="w-24 h-24 rounded-[2rem] bg-gradient-to-br from-rose-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center shrink-0 shadow-2xl">
+        <i data-lucide="cpu" class="w-12 h-12 text-rose-400 fill-current"></i>
+      </div>
+      <div class="flex-1 pt-2">
+        <h1 class="text-5xl md:text-6xl font-bold text-white tracking-tight mb-4">Straftard</h1>
+        <p class="text-xl text-neutral-400 font-medium max-w-2xl mb-8">
+          Most feature-rich FREE cheat for Straftat
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="https://github.com/diddenbludden/Straftat-Cheats" target="_blank"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1C1C1E] text-white text-sm font-semibold border border-white/10 hover:bg-white/10 transition-colors">
+            <i data-lucide="github" class="w-4 h-4 fill-current"></i>
+            View Source
+          </a>
         </div>
-    </nav>
+      </div>
+    </div>
 
-    <main class="max-w-5xl mx-auto px-6 pt-32 pb-20">
-        <!-- Back Button -->
-        <a href="../index.html#work"
-            class="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-white transition-colors mb-12 group">
-            <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
-            Back to projects
-        </a>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
 
-        <!-- Header -->
-        <div class="flex flex-col md:flex-row items-start gap-8 mb-16">
-            <div
-                class="w-24 h-24 rounded-[2rem] bg-gradient-to-br from-rose-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center shrink-0 shadow-2xl">
-                <i data-lucide="cpu" class="w-12 h-12 text-rose-400 fill-current"></i>
-            </div>
-            <div class="flex-1 pt-2">
-                <h1 class="text-5xl md:text-6xl font-bold text-white tracking-tight mb-4">Straftard</h1>
-                <p class="text-xl text-neutral-400 font-medium max-w-2xl mb-8">most feature-rich FREE cheat for straftat </p>
+      <!-- Main Screenshot (Span 8) -->
+      <div class="md:col-span-8 space-y-8">
+        <div class="rounded-[2.5rem] overflow-hidden border border-white/10 bg-[#1C1C1E] shadow-2xl group">
+          <img src="../assets/images/straftat/straftat_cc_menu.png" alt="straftat.cc Menu"
+            class="w-full h-auto transform transition-transform duration-700 group-hover:scale-[1.02]">
+        </div>
 
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://github.com/diddenbludden/Straftat-Cheats" target="_blank"
-                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1C1C1E] text-white text-sm font-semibold border border-white/10 hover:bg-white/10 transition-colors">
-                        <i data-lucide="github" class="w-4 h-4 fill-current"></i>
-                        View Source
-                    </a>
+        <!-- Description -->
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-2xl font-bold text-white mb-4">Overview</h3>
+          <p class="text-neutral-400 text-lg leading-relaxed">
+            An open source project focused on developing the best free cheats for Straftat with C# and Shaderlabs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sidebar (Span 4) -->
+      <div class="md:col-span-4 space-y-8">
+
+        <!-- Features Accordion -->
+        <h3 class="text-xl font-bold text-white mb-6">Key Features</h3>
+        <div class="space-y-4">
+
+          <!-- Accordion Item Template -->
+          <div class="group border border-white/10 rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
+              <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="crosshair" class="w-4 h-4 text-rose-400"></i>
                 </div>
+                <span class="text-white font-semibold">Aiming</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
+            </button>
+            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
+              Aimbot, Silent Aim, FOV (Aimbot)
             </div>
-        </div>
+          </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-
-            <!-- Main Screenshot (Span 8) -->
-            <div class="md:col-span-8 space-y-8">
-                <div class="rounded-[2.5rem] overflow-hidden border border-white/10 bg-[#1C1C1E] shadow-2xl group">
-                    <img src="../assets/images/straftat/straftat_cc_menu.png" alt="straftat.cc Menu"
-                        class="w-full h-auto transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="group border border-white/10 rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
+              <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="eye" class="w-4 h-4 text-rose-400"></i>
                 </div>
+                <span class="text-white font-semibold">Visuals</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
+            </button>
+            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
+              ESP (Flat Square, Box), Tracers, Chams, Spam Effects, Spam Killfeed
+            </div>
+          </div>
 
-                <!-- Description -->
-                <div class="prose prose-invert max-w-none">
-                    <h3 class="text-2xl font-bold text-white mb-4">Overview</h3>
-                    <p class="text-neutral-400 text-lg leading-relaxed">
-                        An open source project focused on devoloping the best free cheats for straftat with C# and Shaderlabs
-                    </p>
+          <div class="group border border-white/10 rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
+              <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="zap" class="w-4 h-4 text-rose-400"></i>
                 </div>
+                <span class="text-white font-semibold">WeaponMods</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
+            </button>
+            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
+              Inf Ammo, Insta Kill, Rapid Fire, No Spread, No Recoil, Wallbang (host only)
             </div>
+          </div>
 
-            <!-- Sidebar (Span 4) -->
-            <div class="md:col-span-4 space-y-8">
-
-                <!-- Features -->
-                <h3 class="text-xl font-bold text-white mb-6">Key Features</h3>
-<div class="space-y-4">
-
-  <!-- Accordion Item Template -->
-  <div class="group border border-white/10 rounded-2xl overflow-hidden">
-    <button
-      class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none"
-      onclick="toggleAccordion(this)">
-      <div class="flex items-center gap-4">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="crosshair" class="w-4 h-4 text-rose-400"></i>
-        </div>
-        <span class="text-white font-semibold">Aiming</span>
-      </div>
-      <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
-    </button>
-    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
-      Aimbot, Silent Aim, FOV (Aimbot)
-    </div>
-  </div>
-
-  <div class="group border border-white/10 rounded-2xl overflow-hidden">
-    <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
-      <div class="flex items-center gap-4">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="eye" class="w-4 h-4 text-rose-400"></i>
-        </div>
-        <span class="text-white font-semibold">Visuals</span>
-      </div>
-      <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
-    </button>
-    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
-      ESP (Flat Square, Box), Tracers, Chams, Spam Effects (patched/host sometimes works), Spam Killfeed (patched/host sometimes works)
-    </div>
-  </div>
-
-  <div class="group border border-white/10 rounded-2xl overflow-hidden">
-    <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
-      <div class="flex items-center gap-4">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="zap" class="w-4 h-4 text-rose-400"></i>
-        </div>
-        <span class="text-white font-semibold">WeaponMods</span>
-      </div>
-      <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
-    </button>
-    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
-      Inf Ammo, Insta Kill, Rapid Fire, No Spread, No Recoil, Wallbang (host only)
-    </div>
-  </div>
-
-  <div class="group border border-white/10 rounded-2xl overflow-hidden">
-    <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
-      <div class="flex items-center gap-4">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="navigation" class="w-4 h-4 text-rose-400"></i>
-        </div>
-        <span class="text-white font-semibold">Movement</span>
-      </div>
-      <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
-    </button>
-    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
-      Walkspeed, SprintSpeed, Gravity, Crouch Speed, Weapon Jump Height, Weapon Wall Jump Limit, Spoof Slide (Anti Aim), Grounded, Spoof Sprint Animation, Spoof Scope FX, Spoof Lean Animation, TP to enemy, Flight
-    </div>
-  </div>
-
-  <div class="group border border-white/10 rounded-2xl overflow-hidden">
-    <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
-      <div class="flex items-center gap-4">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="more-horizontal" class="w-4 h-4 text-rose-400"></i>
-        </div>
-        <span class="text-white font-semibold">Misc</span>
-      </div>
-      <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
-    </button>
-    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
-      God mode, Crasher (OP), Damage suppression, Freeze Enemy (host only), Repulsor to Mars, Disarm Enemies (fx only non-host), Spoof Name, Unlock Achievements (F5)
-    </div>
-  </div>
-
-  <div class="group border border-white/10 rounded-2xl overflow-hidden">
-    <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
-      <div class="flex items-center gap-4">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="settings" class="w-4 h-4 text-rose-400"></i>
-        </div>
-        <span class="text-white font-semibold">Settings</span>
-      </div>
-      <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
-    </button>
-    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
-      Keybinds, Theme Customization
-    </div>
-  </div>
-
-</div>
-
-<script>
-  function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const chevron = button.querySelector("i[data-lucide='chevron-down']");
-    
-    if(content.style.maxHeight){
-      content.style.maxHeight = null;
-      chevron.style.transform = 'rotate(0deg)';
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-      chevron.style.transform = 'rotate(180deg)';
-    }
-  }
-</script>
-
-                <!-- Tech Stack -->
-                <div class="p-8 rounded-[2.5rem] bg-[#1C1C1E] border border-white/10">
-                    <h3 class="text-xl font-bold text-white mb-6">Langs</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-sm font-medium text-neutral-300">C#</span>
-                        <span
-                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-sm font-medium text-neutral-300">Unity</span>
-                        <span
-                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-sm font-medium text-neutral-300">Mono</span>
-                      <span
-                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-sm font-medium text-neutral-300">Harmony</span>
-                    </div>
+          <div class="group border border-white/10 rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
+              <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="navigation" class="w-4 h-4 text-rose-400"></i>
                 </div>
-
+                <span class="text-white font-semibold">Movement</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
+            </button>
+            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
+              Walkspeed, SprintSpeed, Gravity, Crouch Speed, Weapon Jump Height, Weapon Wall Jump Limit, Spoof Slide (Anti Aim), Grounded, Spoof Sprint Animation, Spoof Scope FX, Spoof Lean Animation, TP to enemy, Flight
             </div>
+          </div>
+
+          <div class="group border border-white/10 rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
+              <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="more-horizontal" class="w-4 h-4 text-rose-400"></i>
+                </div>
+                <span class="text-white font-semibold">Misc</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
+            </button>
+            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
+              God mode, Crasher, Damage suppression, Freeze Enemy, Repulsor to Mars, Disarm Enemies, Spoof Name, Unlock Achievements
+            </div>
+          </div>
+
+          <div class="group border border-white/10 rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus:outline-none" onclick="toggleAccordion(this)">
+              <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="settings" class="w-4 h-4 text-rose-400"></i>
+                </div>
+                <span class="text-white font-semibold">Settings</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-white transition-transform duration-300"></i>
+            </button>
+            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 px-4 pb-4 text-sm text-neutral-400">
+              Keybinds, Theme Customization
+            </div>
+          </div>
+
         </div>
 
-    </main>
+        <!-- Accordion Script -->
+        <script>
+          function toggleAccordion(button) {
+            const allItems = document.querySelectorAll('.accordion-content');
+            const allChevrons = document.querySelectorAll('.group > button i[data-lucide="chevron-down"]');
+            const content = button.nextElementSibling;
+            const chevron = button.querySelector('i[data-lucide="chevron-down"]');
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 bg-[#050505] py-12">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-16">
-            <div class="text-neutral-500 text-sm">
-                © 2026 80HE. All rights reserved.
+            // Close all other items
+            allItems.forEach((item) => {
+              if (item !== content) item.style.maxHeight = null;
+            });
+            allChevrons.forEach((icon) => {
+              if (icon !== chevron) icon.style.transform = 'rotate(0deg)';
+            });
+
+            // Toggle current
+            if (content.style.maxHeight) {
+              content.style.maxHeight = null;
+              chevron.style.transform = 'rotate(0deg)';
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+              chevron.style.transform = 'rotate(180deg)';
+            }
+          }
+        </script>
+
+        <!-- Tech Stack -->
+        <div class="p-8 rounded-[2.5rem] bg-[#1C1C1E] border border-white/10">
+          <h3 class="text-xl font-bold text-white mb-6">Langs</h3>
+          <div class="flex flex-wrap gap-2">
+            <div class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <img src="https://cdn.simpleicons.org/csharp/white" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity brightness-0 invert" alt="C#">
+              <span class="text-sm font-medium">C#</span>
             </div>
+            <div class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <img src="https://cdn.simpleicons.org/unity/white" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" alt="Unity">
+              <span class="text-sm font-medium">Unity</span>
+            </div>
+            <div class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <img src="https://cdn.simpleicons.org/mono/white" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" alt="Mono">
+              <span class="text-sm font-medium">Mono</span>
+            </div>
+            <div class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <img src="https://cdn.simpleicons.org/harmony/white" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" alt="Harmony">
+              <span class="text-sm font-medium">Harmony</span>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 bg-[#050505] py-12">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-16">
+      <div class="text-neutral-500 text-sm">
+        © 2026 80HE. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
 </body>
-
 </html>
