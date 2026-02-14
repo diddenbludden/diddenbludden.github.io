@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Outfit', sans-serif;
+}
+
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.tech {
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+}
+
+.project {
+  background: rgba(255,255,255,0.04);
+  padding: 24px;
+  border-radius: 20px;
+  transition: all .3s ease;
+}
+.project:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
