@@ -204,6 +204,28 @@
           </div>
         </div>
       </div>
+      <!-- Download -->
+<div class="glass-card p-6">
+  <h2 class="text-2xl font-bold text-accent mb-4">Download</h2>
+
+  <button id="downloadBtn"
+    data-url="https://github.com/diddenbludden/Straftat-Cheats/releases/download/cheats/straftard.zip"
+    onclick="startDownload()"
+    class="w-full py-3 rounded-xl bg-accent text-white font-semibold hover:brightness-110 transition relative overflow-hidden">
+    <span id="btnText">Download</span>
+  </button>
+
+  <div class="mt-4 h-3 w-full bg-[#1C0C2A]/60 rounded-full overflow-hidden hidden" id="progressWrap">
+    <div id="progressBar"
+      class="h-full bg-accent rounded-full transition-all duration-300"
+      style="width:0%">
+    </div>
+  </div>
+
+  <p id="downloadStatus" class="text-sm text-neutral-400 mt-3 hidden">
+    Download in progress…
+  </p>
+</div>
 
       <!-- Tech Stack -->
       <div class="glass-card p-6">
@@ -239,6 +261,67 @@
       }
     }
   </script>
+  <script>
+  lucide.createIcons();
+
+  function toggleAccordion(button) {
+    const content = button.nextElementSibling;
+    const chevron = button.querySelector('i[data-lucide="chevron-down"]');
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      chevron.style.transform = 'rotate(0deg)';
+    } else {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      chevron.style.transform = 'rotate(180deg)';
+    }
+  }
+
+  function startDownload() {
+    const btn = document.getElementById("downloadBtn");
+    const text = document.getElementById("btnText");
+    const bar = document.getElementById("progressBar");
+    const wrap = document.getElementById("progressWrap");
+    const status = document.getElementById("downloadStatus");
+
+    btn.disabled = true;
+    btn.classList.add("opacity-60", "cursor-not-allowed");
+    text.textContent = "Preparing...";
+    wrap.classList.remove("hidden");
+    status.classList.remove("hidden");
+
+    let width = 0;
+    const interval = setInterval(() => {
+      width += Math.random() * 10;
+      if (width >= 100) width = 100;
+      bar.style.width = width + "%";
+      text.textContent = "Downloading... " + Math.floor(width) + "%";
+
+      if (width >= 100) {
+        clearInterval(interval);
+        text.textContent = "Download Complete";
+
+        // 🔗 REAL DOWNLOAD
+        const fileUrl = btn.getAttribute("data-url");
+        const a = document.createElement("a");
+        a.href = fileUrl;
+        a.download = "";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        btn.classList.remove("opacity-60", "cursor-not-allowed");
+        btn.disabled = false;
+
+        setTimeout(() => {
+          wrap.classList.add("hidden");
+          status.classList.add("hidden");
+          bar.style.width = "0%";
+          text.textContent = "Download";
+        }, 2000);
+      }
+    }, 300);
+  }
+</script>
 
 </body>
 </html>
