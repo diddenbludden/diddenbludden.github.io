@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>80he</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="https://github.com/80he.png">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#050505',
+            card: 'rgba(255,255,255,0.03)',
+            border: 'rgba(255,255,255,0.06)'
+          },
+          borderRadius: {
+            xl: '20px',
+            '3xl': '32px'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-dark text-white font-sans antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass px-4 py-2 rounded-full flex gap-6 text-sm">
+  <a href="#home" class="hover:text-white text-white/70">Home</a>
+  <a href="#work" class="hover:text-white text-white/70">Work</a>
+</nav>
+
+<main class="pt-32 max-w-7xl mx-auto px-6">
+
+  <!-- HERO -->
+  <section id="home" class="grid md:grid-cols-3 gap-6 mb-20">
+
+    <!-- LEFT PROFILE -->
+    <div class="glass rounded-3xl p-8 flex flex-col justify-between">
+      <div>
+        <img src="https://github.com/80he.png" class="w-20 h-20 rounded-full mb-5">
+        <h1 class="text-3xl font-bold">80he</h1>
+        <p class="text-white/60 mt-1">Software Developer</p>
+      </div>
+
+      <div class="mt-6 flex gap-3">
+        <a href="https://github.com/80he" target="_blank"
+           class="p-3 bg-white/5 rounded-full hover:bg-white hover:text-black transition">
+          <i data-lucide="github" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- CENTER FEATURE -->
+    <div class="glass rounded-3xl col-span-2 p-10 flex flex-col justify-center relative overflow-hidden">
+      <h2 class="text-4xl font-bold mb-4">Building tools & systems</h2>
+      <p class="text-white/60 max-w-lg">
+        I create automation tools, game utilities, and backend systems
+        focused on performance and control.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="glass rounded-3xl p-10 mb-20">
+    <h2 class="text-2xl font-bold mb-6">Core Stack</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div class="tech">JavaScript</div>
+      <div class="tech">C#</div>
+      <div class="tech">Docker</div>
+      <div class="tech">Java</div>
+      <div class="tech">Python</div>
+      <div class="tech">C++</div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="mb-20">
+    <h2 class="text-3xl font-bold mb-10">Projects</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="project">
+        <h3>Lunar GeoGuessr</h3>
+        <p>JavaScript automation & tooling</p>
+      </div>
+
+      <div class="project">
+        <h3>MTRX Ware</h3>
+        <p>C# • ImGui</p>
+      </div>
+
+      <div class="project">
+        <h3>Snake Gambling</h3>
+        <p>Python • Pygame</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
