@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babybound — Westbound Script</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --paper:   #1a1208;
+      --paper2:  #120e06;
+      --ink:     #f0d99a;
+      --ink-dim: #9a8350;
+      --sepia:   #c9973a;
+      --sepia2:  #8a6220;
+      --red:     #a03020;
+      --border:  rgba(201, 151, 58, 0.3);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--paper2);
+      color: var(--ink);
+      font-family: 'Special Elite', cursive;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 999;
+      background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
+      mix-blend-mode: multiply;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.55) 100%);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 6, 0.92);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 2rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Rye', cursive; font-size: 1.2rem;
+      color: var(--sepia); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+    }
+    .nav-logo:hover { color: var(--ink); }
+    .nav-badge {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--sepia2);
+      border: 1px solid var(--sepia2); padding: 0.2rem 0.6rem; border-radius: 2px;
+    }
+
+    /* LAYOUT */
+    main {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 6rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+
+    /* POSTER HEADER */
+    .poster-header {
+      border: 2px solid var(--sepia2); padding: 2.5rem 2.5rem 2rem;
+      position: relative; background: rgba(26, 18, 8, 0.7); margin-bottom: 2rem;
+    }
+    .poster-header::before, .poster-header::after {
+      content: ''; position: absolute; width: 18px; height: 18px;
+      border-color: var(--sepia); border-style: solid;
+    }
+    .poster-header::before { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
+    .poster-header::after  { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+    .wanted-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia2); display: block; margin-bottom: 0.6rem;
+    }
+    .wanted-dead {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.4em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1rem;
+    }
+    h1 { font-family: 'Rye', cursive; font-size: clamp(2.8rem, 6vw, 4.5rem); color: var(--ink); line-height: 1; letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+    h1 span { color: var(--sepia); }
+    .subtitle {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-dim);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.75rem; margin-bottom: 1.5rem;
+    }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--sepia2), transparent); margin: 1.2rem 0; }
+    .overview-text { font-size: 0.95rem; line-height: 1.85; color: rgba(240, 217, 154, 0.7); }
+    .overview-text strong { color: var(--sepia); font-family: inherit; }
+
+    /* SCREENSHOT FRAME */
+    .screenshot-frame {
+      position: relative; border: 1px solid var(--sepia2); padding: 1.5rem;
+      background: rgba(26, 18, 8, 0.7); margin-bottom: 2rem;
+    }
+    .screenshot-frame::before {
+      content: '[ FIELD OPERATION — WESTBOUND ]'; display: block;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em;
+      color: var(--sepia2); margin-bottom: 1rem;
+    }
+    .screenshot-placeholder {
+      width: 100%; aspect-ratio: 16/8;
+      background: rgba(12, 9, 4, 0.8); border: 1px dashed rgba(201, 151, 58, 0.2);
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem; position: relative; overflow: hidden;
+    }
+    .screenshot-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, rgba(201,151,58,0.02) 0, rgba(201,151,58,0.02) 1px, transparent 1px, transparent 8px);
+    }
+    .screenshot-placeholder .icon { font-size: 2.5rem; opacity: 0.4; }
+    .screenshot-placeholder p {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--ink-dim); opacity: 0.4;
+    }
+    .corner-tl, .corner-br { position: absolute; width: 12px; height: 12px; border-color: var(--sepia); border-style: solid; }
+    .corner-tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+    .corner-br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+    /* GH LINK */
+    .gh-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em;
+      color: var(--ink-dim); text-decoration: none; border: 1px solid var(--border); padding: 0.5rem 1.1rem; transition: color 0.2s, border-color 0.2s;
+    }
+    .gh-link:hover { color: var(--sepia); border-color: var(--sepia); }
+    .gh-link svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* PANEL */
+    .panel { border: 1px solid var(--border); background: rgba(18, 14, 6, 0.8); position: relative; margin-bottom: 1.5rem; }
+    .panel-header { padding: 1rem 1.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .panel-title { font-family: 'Rye', cursive; font-size: 0.95rem; color: var(--sepia); letter-spacing: 0.06em; }
+    .panel-count { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--sepia2); letter-spacing: 0.1em; }
+    .panel-body { padding: 0.5rem 0; }
+
+    /* FEATURE ACCORDION */
+    .feat-group { border-bottom: 1px solid rgba(201,151,58,0.1); }
+    .feat-group:last-child { border-bottom: none; }
+    .feat-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1.4rem; background: none; border: none; cursor: pointer; text-align: left; transition: background 0.15s;
+    }
+    .feat-btn:hover { background: rgba(201,151,58,0.05); }
+    .feat-btn-left { display: flex; align-items: center; gap: 0.75rem; }
+    .feat-icon {
+      width: 28px; height: 28px; border: 1px solid var(--sepia2);
+      display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; color: var(--sepia);
+    }
+    .feat-name { font-family: 'Special Elite', cursive; font-size: 0.88rem; color: var(--ink); letter-spacing: 0.03em; }
+    .feat-arrow { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--sepia2); transition: transform 0.3s; display: inline-block; }
+    .feat-arrow.open { transform: rotate(90deg); }
+    .feat-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .feat-content-inner { padding: 0 1.4rem 1rem 3.5rem; }
+    .feat-item { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ink-dim); letter-spacing: 0.06em; line-height: 2; }
+    .feat-item::before { content: '→ '; color: var(--sepia2); }
+
+    /* DOWNLOAD PANEL */
+    .dl-panel {
+      border: 1px solid var(--sepia2); background: rgba(18, 14, 6, 0.9); padding: 1.6rem; position: relative; margin-bottom: 1.5rem;
+    }
+    .dl-panel::before, .dl-panel::after {
+      content: ''; position: absolute; width: 14px; height: 14px; border-color: var(--sepia); border-style: solid;
+    }
+    .dl-panel::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .dl-panel::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+    .dl-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sepia2); margin-bottom: 0.3rem; }
+    .dl-title { font-family: 'Rye', cursive; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.4rem; }
+    .dl-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.64rem; color: var(--ink-dim); opacity: 0.5; letter-spacing: 0.08em; margin-bottom: 1.4rem; }
+    .dl-btn {
+      width: 100%; padding: 0.95rem; background: var(--sepia2); color: var(--ink);
+      border: 1px solid var(--sepia); font-family: 'Rye', cursive; font-size: 0.85rem; letter-spacing: 0.1em;
+      cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; position: relative; overflow: hidden;
+    }
+    .dl-btn:hover:not(:disabled) { background: var(--sepia); color: var(--paper2); box-shadow: 0 0 30px rgba(201,151,58,0.3); }
+    .dl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .progress-wrap { margin-top: 0.9rem; height: 2px; background: rgba(201,151,58,0.15); display: none; }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, var(--sepia2), var(--sepia)); width: 0%; transition: width 0.3s; }
+    .dl-status { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--sepia2); letter-spacing: 0.1em; margin-top: 0.6rem; display: none; }
+
+    /* STACK */
+    .stack-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ink-dim);
+      border: 1px solid rgba(201,151,58,0.2); padding: 0.35rem 0.75rem; margin: 0.25rem;
+    }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
+    footer p { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--sepia2); opacity: 0.5; text-transform: uppercase; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .a1 { animation: fadeUp 0.6s ease both 0.05s; }
+    .a2 { animation: fadeUp 0.6s ease both 0.15s; }
+    .a3 { animation: fadeUp 0.6s ease both 0.25s; }
+    .a4 { animation: fadeUp 0.6s ease both 0.35s; }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--sepia2); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">80he.</a>
+      <span class="nav-badge">Westbound &middot; Free</span>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- LEFT -->
+    <div>
+      <div class="poster-header a1">
+        <span class="wanted-label">&#9670; Roblox Script &#9670;</span>
+        <span class="wanted-dead">&#9670; Westbound &middot; Free &middot; Open Source &#9670;</span>
+        <h1>Baby<span>bound</span></h1>
+        <p class="subtitle">&mdash; The free wild-west script &mdash;</p>
+        <div class="divider"></div>
+        <p class="overview-text">
+          Babybound is the most feature-complete free Lua script for <strong>Westbound</strong>.
+          Precision aimbot, silent aim, full ESP suite, horse editor, and a powerful autofarm &mdash;
+          all in one clean inject-and-run package. No key system. No strings attached.
+        </p>
+      </div>
+
+      <div class="screenshot-frame a2">
+        <div class="corner-tl"></div>
+        <div class="corner-br"></div>
+        <div class="screenshot-placeholder">
+          <span class="icon">&#129312;</span>
+          <p>Replace with screenshot</p>
+        </div>
+      </div>
+
+      <div class="a3">
+        <a href="https://github.com/" target="_blank" class="gh-link">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          View Source on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside>
+
+      <div class="panel a2">
+        <div class="panel-header">
+          <span class="panel-title">Features</span>
+          <span class="panel-count">7 MODULES</span>
+        </div>
+        <div class="panel-body">
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#127919;</div>
+                <span class="feat-name">Aimbot</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Aim Assist</div>
+                <div class="feat-item">FOV Circle</div>
+                <div class="feat-item">Aim Smoothing</div>
+                <div class="feat-item">Bone Selector</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#128123;</div>
+                <span class="feat-name">Silent Aim</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Redirect bullets to target</div>
+                <div class="feat-item">Adjustable hit chance %</div>
+                <div class="feat-item">Works with all weapons</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#128065;</div>
+                <span class="feat-name">ESP</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Box ESP</div>
+                <div class="feat-item">Name &amp; Health bar</div>
+                <div class="feat-item">Tracers</div>
+                <div class="feat-item">Distance label</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#128230;</div>
+                <span class="feat-name">Chest ESP</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Highlight all loot chests</div>
+                <div class="feat-item">Show chest distance</div>
+                <div class="feat-item">Filter by rarity</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#128300;</div>
+                <span class="feat-name">Item ESP</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Dropped item highlights</div>
+                <div class="feat-item">Gold nugget finder</div>
+                <div class="feat-item">Item name &amp; distance labels</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#128014;</div>
+                <span class="feat-name">Horse Editor</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Speed multiplier</div>
+                <div class="feat-item">Jump boost</div>
+                <div class="feat-item">Infinite stamina</div>
+                <div class="feat-item">Horse ESP</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="toggle(this)">
+              <div class="feat-btn-left">
+                <div class="feat-icon">&#9881;</div>
+                <span class="feat-name">Autofarm</span>
+              </div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content">
+              <div class="feat-content-inner">
+                <div class="feat-item">Auto collect gold</div>
+                <div class="feat-item">Auto loot chests</div>
+                <div class="feat-item">Auto claim bounties</div>
+                <div class="feat-item">Auto sell items</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Download -->
+      <div class="dl-panel a3">
+        <div class="dl-label">&#9670; Get it now &#9670;</div>
+        <div class="dl-title">Download</div>
+        <div class="dl-note">No key system &mdash; inject &amp; execute</div>
+        <button id="dlBtn" class="dl-btn" data-url="https://github.com/" onclick="startDownload()">
+          <span id="dlText">&#8659; Download Script</span>
+        </button>
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="dl-status" id="dlStatus">Preparing download&hellip;</div>
+      </div>
+
+      <!-- Stack -->
+      <div class="panel a4">
+        <div class="panel-header">
+          <span class="panel-title">Stack</span>
+        </div>
+        <div style="padding:1rem 1.4rem; display:flex; flex-wrap:wrap; gap:0.2rem;">
+          <span class="stack-pill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-plain.svg" style="width:13px;height:13px;" alt="">
+            Lua / Luau
+          </span>
+          <span class="stack-pill">&#127918; Roblox API</span>
+          <span class="stack-pill">&#128375; Synapse X</span>
+          <span class="stack-pill">&#128295; Wave</span>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 1996 80HE. All rights reserved. &nbsp;&middot;&nbsp; Use responsibly.</p>
+  </footer>
+
+  <script>
+    function toggle(btn) {
+      const content = btn.nextElementSibling;
+      const arrow   = btn.querySelector('.feat-arrow');
+      const isOpen  = content.style.maxHeight;
+      document.querySelectorAll('.feat-content').forEach(c => c.style.maxHeight = null);
+      document.querySelectorAll('.feat-arrow').forEach(a => a.classList.remove('open'));
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        arrow.classList.add('open');
+      }
+    }
+
+    function startDownload() {
+      const btn  = document.getElementById('dlBtn');
+      const text = document.getElementById('dlText');
+      const wrap = document.getElementById('progressWrap');
+      const bar  = document.getElementById('progressBar');
+      const stat = document.getElementById('dlStatus');
+      btn.disabled = true;
+      wrap.style.display = 'block';
+      stat.style.display = 'block';
+      stat.textContent = 'Preparing download\u2026';
+      let w = 0;
+      const iv = setInterval(() => {
+        w += Math.random() * 12;
+        if (w >= 100) w = 100;
+        bar.style.width = w + '%';
+        text.textContent = '\u2193 ' + Math.floor(w) + '%';
+        if (w >= 100) {
+          clearInterval(iv);
+          text.textContent = '\u2713 Complete';
+          stat.textContent = 'Opening download\u2026';
+          const a = document.createElement('a');
+          a.href = btn.getAttribute('data-url');
+          a.download = '';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          btn.disabled = false;
+          setTimeout(() => {
+            wrap.style.display = 'none';
+            stat.style.display = 'none';
+            bar.style.width = '0%';
+            text.textContent = '\u2193 Download Script';
+          }, 2500);
+        }
+      }, 280);
+    }
+  </script>
+
+</body>
+</html>
