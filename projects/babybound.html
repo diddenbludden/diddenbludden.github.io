@@ -236,14 +236,447 @@
         </p>
       </div>
 
-      <div class="screenshot-frame a2">
-        <div class="corner-tl"></div>
-        <div class="corner-br"></div>
-        <div class="screenshot-placeholder">
-          <span class="icon">&#129312;</span>
-          <p>Replace with screenshot</p>
+      <!-- ══ RAYFIELD GUI SANDBOX ══ -->
+      <div class="gui-sandbox a2">
+        <div class="gui-window" id="guiWindow">
+
+          <!-- Title Bar -->
+          <div class="gui-titlebar" id="guiTitlebar">
+            <div class="gui-titlebar-left">
+              <div class="gui-logo">BB</div>
+              <div>
+                <div class="gui-title">BabyBound</div>
+                <div class="gui-subtitle">80he, Greg, Fresh</div>
+              </div>
+            </div>
+            <div class="gui-titlebar-right">
+              <span class="gui-keybind">[K]</span>
+              <button class="gui-close-btn" onclick="toggleGui()">&#10005;</button>
+            </div>
+          </div>
+
+          <!-- Tab Bar -->
+          <div class="gui-tabs">
+            <button class="gui-tab active" onclick="switchTab('combat',this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 2"/></svg>
+              Combat
+            </button>
+            <button class="gui-tab" onclick="switchTab('visuals',this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Visuals
+            </button>
+            <button class="gui-tab" onclick="switchTab('world',this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              World
+            </button>
+            <button class="gui-tab" onclick="switchTab('farm',this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              AutoFarm
+            </button>
+            <button class="gui-tab" onclick="switchTab('appearance',this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Appearance
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="gui-body">
+
+            <!-- COMBAT -->
+            <div class="gui-pane active" id="tab-combat">
+              <div class="gui-section-label">Aimbot Settings</div>
+              <div class="gui-row"><span class="gui-row-label">Aim at Players</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">Aim at Animals</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">Wall Check</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">No Recoil</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">Inf Ammo</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Silent Aim</div>
+              <div class="gui-row"><span class="gui-row-label">Silent Aim</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">SA: Alive Check</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">SA: Visible Check</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">SA: Bullet Teleport</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">SA: Show Target</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Aimbot FOV</div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">FOV Radius</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="0" max="800" value="150" oninput="updSlider(this,'fov-val')">
+                  <span class="gui-slider-val" id="fov-val">150px</span>
+                </div>
+              </div>
+              <div class="gui-row"><span class="gui-row-label">Show FOV Circle</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+            </div>
+
+            <!-- VISUALS -->
+            <div class="gui-pane" id="tab-visuals">
+              <div class="gui-section-label">Player ESP</div>
+              <div class="gui-row"><span class="gui-row-label">Name ESP</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">Health ESP</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">Chams</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">Show Distance</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-color-row">
+                <span class="gui-row-label">Player ESP Color</span>
+                <input type="color" class="gui-color" value="#ff0000">
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Animal ESP</div>
+              <div class="gui-row"><span class="gui-row-label">Animal ESP</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">Max Animal ESP Range</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="500" max="20000" value="10000" oninput="updSlider(this,'animalrange-val')">
+                  <span class="gui-slider-val" id="animalrange-val">10000studs</span>
+                </div>
+              </div>
+              <div class="gui-color-row">
+                <span class="gui-row-label">Animal ESP Color</span>
+                <input type="color" class="gui-color" value="#ffa500">
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Chest &amp; Item ESP</div>
+              <div class="gui-row"><span class="gui-row-label">Chest ESP</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">Max Chest ESP Range</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="500" max="20000" value="10000" oninput="updSlider(this,'chestrange-val')">
+                  <span class="gui-slider-val" id="chestrange-val">10000studs</span>
+                </div>
+              </div>
+              <div class="gui-color-row">
+                <span class="gui-row-label">Chest ESP Color</span>
+                <input type="color" class="gui-color" value="#ffd700">
+              </div>
+              <div class="gui-row"><span class="gui-row-label">Item ESP</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">Max Item ESP Range</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="500" max="20000" value="10000" oninput="updSlider(this,'itemrange-val')">
+                  <span class="gui-slider-val" id="itemrange-val">10000studs</span>
+                </div>
+              </div>
+              <div class="gui-color-row">
+                <span class="gui-row-label">Item ESP Color</span>
+                <input type="color" class="gui-color" value="#00ffc8">
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Text</div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">Text Size</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="8" max="20" value="12" oninput="updSlider(this,'textsize-val')">
+                  <span class="gui-slider-val" id="textsize-val">12px</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- WORLD -->
+            <div class="gui-pane" id="tab-world">
+              <div class="gui-section-label">Themes</div>
+              <div class="gui-dropdown-row">
+                <span class="gui-row-label">GUI Theme</span>
+                <select class="gui-select">
+                  <option>Default</option><option>AmberGlow</option><option>Amethyst</option>
+                  <option>Bloom</option><option>DarkBlue</option><option>Green</option>
+                  <option>Light</option><option>Ocean</option><option>Serenity</option>
+                </select>
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Utility</div>
+              <div class="gui-row"><span class="gui-row-label">Full Bright</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">No Fog</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-row"><span class="gui-row-label">TP-Walk</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">TP Speed</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="1" max="15" value="2" oninput="updSlider(this,'tpspeed-val')">
+                  <span class="gui-slider-val" id="tpspeed-val">2x</span>
+                </div>
+              </div>
+              <div class="gui-row"><span class="gui-row-label">Instant Interact</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Horse</div>
+              <div class="gui-slider-row">
+                <span class="gui-row-label">Horse Turn Speed</span>
+                <div class="gui-slider-wrap">
+                  <input type="range" class="gui-slider" min="0" max="420" value="26" oninput="updSlider(this,'horseturn-val')">
+                  <span class="gui-slider-val" id="horseturn-val">26</span>
+                </div>
+              </div>
+              <div class="gui-row"><span class="gui-row-label">Horse Whip (Follow)</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Bullet FX</div>
+              <div class="gui-color-row">
+                <span class="gui-row-label">Bullet Trail Colour</span>
+                <input type="color" class="gui-color" value="#ff0080">
+              </div>
+            </div>
+
+            <!-- AUTOFARM -->
+            <div class="gui-pane" id="tab-farm">
+              <div class="gui-section-label">Mansion Item Farm</div>
+              <div class="gui-row"><span class="gui-row-label">Auto Farm (Mansion Items)</span><div class="gui-toggle" onclick="tog(this)"><div class="gui-knob"></div></div></div>
+
+              <div class="gui-input-row">
+                <span class="gui-row-label">Inventory Slots</span>
+                <input type="text" class="gui-input" placeholder="e.g. 24" value="24">
+              </div>
+
+              <div class="gui-info-box">
+                <div class="gui-info-title">&#128230; How it works</div>
+                <div class="gui-info-text">Teleports to mansion items (skulls, crowns, jewels, keys), picks them up, then automatically sells at the store when your inventory is full.</div>
+              </div>
+            </div>
+
+            <!-- APPEARANCE -->
+            <div class="gui-pane" id="tab-appearance">
+              <div class="gui-section-label">Horse</div>
+              <div class="gui-warn-box" id="horseWarn">
+                &#9888;&#65039; Horse Not Found — spawn your horse then press Refresh.
+              </div>
+              <button class="gui-button" onclick="document.getElementById('horseWarn').style.display='none'">Refresh Horse</button>
+
+              <div class="gui-section-label" style="margin-top:1rem">Body</div>
+              <div class="gui-color-row"><span class="gui-row-label">Body Colour</span><input type="color" class="gui-color" value="#ffffff"></div>
+              <div class="gui-dropdown-row">
+                <span class="gui-row-label">Body Material</span>
+                <select class="gui-select"><option>SmoothPlastic</option><option>Plastic</option><option>Wood</option><option>Marble</option><option>Granite</option><option>Metal</option><option>Neon</option><option>ForceField</option></select>
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Eyes</div>
+              <div class="gui-color-row"><span class="gui-row-label">Eyes Colour</span><input type="color" class="gui-color" value="#ffffff"></div>
+              <div class="gui-dropdown-row">
+                <span class="gui-row-label">Eyes Material</span>
+                <select class="gui-select"><option>SmoothPlastic</option><option>Plastic</option><option>Neon</option><option>Glass</option><option>ForceField</option></select>
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Mane</div>
+              <div class="gui-color-row"><span class="gui-row-label">Mane Colour</span><input type="color" class="gui-color" value="#ffffff"></div>
+              <div class="gui-dropdown-row">
+                <span class="gui-row-label">Mane Material</span>
+                <select class="gui-select"><option>SmoothPlastic</option><option>Plastic</option><option>Fabric</option><option>Neon</option></select>
+              </div>
+
+              <div class="gui-section-label" style="margin-top:1rem">Saddle</div>
+              <div class="gui-color-row"><span class="gui-row-label">Saddle Colour</span><input type="color" class="gui-color" value="#ffffff"></div>
+              <div class="gui-dropdown-row">
+                <span class="gui-row-label">Saddle Material</span>
+                <select class="gui-select"><option>SmoothPlastic</option><option>Leather</option><option>Fabric</option><option>Metal</option></select>
+              </div>
+            </div>
+
+          </div><!-- /gui-body -->
+        </div><!-- /gui-window -->
+
+        <!-- Collapsed badge -->
+        <div class="gui-collapsed" id="guiCollapsed" style="display:none" onclick="toggleGui()">
+          <span>BabyBound</span><span class="gui-keybind">[K] to open</span>
         </div>
-      </div>
+      </div><!-- /gui-sandbox -->
+
+      <style>
+        /* ── SANDBOX WRAPPER ── */
+        .gui-sandbox {
+          margin-bottom: 2rem;
+          position: relative;
+        }
+
+        /* ── WINDOW ── */
+        .gui-window {
+          background: #111118;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
+          font-family: 'IBM Plex Mono', monospace;
+          width: 100%;
+          max-width: 620px;
+          margin: 0 auto;
+          user-select: none;
+        }
+
+        /* ── TITLE BAR ── */
+        .gui-titlebar {
+          background: #1a1a24;
+          padding: 0.7rem 1rem;
+          display: flex; align-items: center; justify-content: space-between;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          cursor: move;
+        }
+        .gui-titlebar-left { display: flex; align-items: center; gap: 0.75rem; }
+        .gui-logo {
+          width: 32px; height: 32px; border-radius: 8px;
+          background: linear-gradient(135deg, #7c3aed, #4f46e5);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 0.65rem; font-weight: 700; color: white; letter-spacing: 0.05em;
+        }
+        .gui-title { font-size: 0.8rem; font-weight: 600; color: #e2e2f0; letter-spacing: 0.04em; }
+        .gui-subtitle { font-size: 0.58rem; color: rgba(255,255,255,0.3); margin-top: 1px; letter-spacing: 0.06em; }
+        .gui-titlebar-right { display: flex; align-items: center; gap: 0.6rem; }
+        .gui-keybind {
+          font-size: 0.58rem; color: rgba(255,255,255,0.25);
+          border: 1px solid rgba(255,255,255,0.1); padding: 0.15rem 0.4rem; border-radius: 3px;
+        }
+        .gui-close-btn {
+          background: none; border: none; cursor: pointer;
+          color: rgba(255,255,255,0.3); font-size: 0.75rem; line-height: 1;
+          width: 22px; height: 22px; border-radius: 4px; transition: background 0.15s, color 0.15s;
+          display: flex; align-items: center; justify-content: center;
+        }
+        .gui-close-btn:hover { background: rgba(255,60,60,0.2); color: #ff6060; }
+
+        /* ── TABS ── */
+        .gui-tabs {
+          display: flex; background: #161620;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+        .gui-tabs::-webkit-scrollbar { display: none; }
+        .gui-tab {
+          display: flex; align-items: center; gap: 0.4rem;
+          padding: 0.6rem 0.9rem;
+          background: none; border: none; cursor: pointer;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+          color: rgba(255,255,255,0.35); white-space: nowrap;
+          border-bottom: 2px solid transparent;
+          transition: color 0.15s, border-color 0.15s;
+        }
+        .gui-tab svg { width: 13px; height: 13px; flex-shrink: 0; }
+        .gui-tab:hover { color: rgba(255,255,255,0.6); }
+        .gui-tab.active { color: #a78bfa; border-bottom-color: #7c3aed; }
+
+        /* ── BODY / PANES ── */
+        .gui-body { max-height: 340px; overflow-y: auto; padding: 0.75rem 0; scrollbar-width: thin; scrollbar-color: rgba(124,58,237,0.4) transparent; }
+        .gui-body::-webkit-scrollbar { width: 4px; }
+        .gui-body::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.4); border-radius: 2px; }
+        .gui-pane { display: none; padding: 0 0.75rem; }
+        .gui-pane.active { display: block; }
+
+        /* ── SECTION LABEL ── */
+        .gui-section-label {
+          font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+          color: rgba(255,255,255,0.2); padding: 0.4rem 0.25rem 0.35rem;
+          border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 0.4rem;
+        }
+
+        /* ── ROW (toggle) ── */
+        .gui-row {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0.45rem 0.25rem;
+          border-radius: 6px; transition: background 0.1s;
+        }
+        .gui-row:hover { background: rgba(255,255,255,0.03); }
+        .gui-row-label { font-size: 0.7rem; color: rgba(255,255,255,0.7); }
+
+        /* ── TOGGLE ── */
+        .gui-toggle {
+          width: 36px; height: 20px; border-radius: 10px;
+          background: rgba(255,255,255,0.1); cursor: pointer; position: relative;
+          transition: background 0.2s; flex-shrink: 0;
+        }
+        .gui-toggle.on { background: #7c3aed; }
+        .gui-knob {
+          width: 14px; height: 14px; border-radius: 50%; background: white;
+          position: absolute; top: 3px; left: 3px; transition: left 0.2s;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+        .gui-toggle.on .gui-knob { left: 19px; }
+
+        /* ── SLIDER ROW ── */
+        .gui-slider-row {
+          padding: 0.45rem 0.25rem;
+          border-radius: 6px; transition: background 0.1s;
+        }
+        .gui-slider-row:hover { background: rgba(255,255,255,0.03); }
+        .gui-slider-wrap { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.35rem; }
+        .gui-slider {
+          -webkit-appearance: none; width: 100%; height: 4px; border-radius: 2px;
+          background: rgba(255,255,255,0.1); outline: none; cursor: pointer;
+        }
+        .gui-slider::-webkit-slider-thumb {
+          -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
+          background: #7c3aed; cursor: pointer; box-shadow: 0 0 6px rgba(124,58,237,0.6);
+        }
+        .gui-slider::-moz-range-thumb {
+          width: 14px; height: 14px; border-radius: 50%; background: #7c3aed;
+          cursor: pointer; border: none; box-shadow: 0 0 6px rgba(124,58,237,0.6);
+        }
+        .gui-slider-val { font-size: 0.62rem; color: #a78bfa; white-space: nowrap; min-width: 52px; text-align: right; }
+
+        /* ── COLOR ROW ── */
+        .gui-color-row {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0.45rem 0.25rem; border-radius: 6px; transition: background 0.1s;
+        }
+        .gui-color-row:hover { background: rgba(255,255,255,0.03); }
+        .gui-color {
+          -webkit-appearance: none; width: 36px; height: 22px; border: none; border-radius: 5px;
+          background: none; cursor: pointer; padding: 0;
+        }
+        .gui-color::-webkit-color-swatch-wrapper { padding: 0; border-radius: 5px; }
+        .gui-color::-webkit-color-swatch { border: 1px solid rgba(255,255,255,0.15); border-radius: 5px; }
+
+        /* ── DROPDOWN ROW ── */
+        .gui-dropdown-row {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0.45rem 0.25rem; border-radius: 6px; transition: background 0.1s;
+        }
+        .gui-dropdown-row:hover { background: rgba(255,255,255,0.03); }
+        .gui-select {
+          background: #1e1e2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;
+          color: rgba(255,255,255,0.7); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+          padding: 0.25rem 0.5rem; cursor: pointer; outline: none;
+        }
+        .gui-select:focus { border-color: rgba(124,58,237,0.5); }
+
+        /* ── INPUT ROW ── */
+        .gui-input-row {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0.45rem 0.25rem; border-radius: 6px;
+        }
+        .gui-input {
+          background: #1e1e2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;
+          color: rgba(255,255,255,0.7); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+          padding: 0.3rem 0.6rem; width: 80px; outline: none;
+        }
+        .gui-input:focus { border-color: rgba(124,58,237,0.5); }
+
+        /* ── INFO BOX ── */
+        .gui-info-box {
+          background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.2);
+          border-radius: 8px; padding: 0.75rem 0.85rem; margin: 0.75rem 0.25rem 0;
+        }
+        .gui-info-title { font-size: 0.68rem; color: #a78bfa; margin-bottom: 0.35rem; }
+        .gui-info-text { font-size: 0.62rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+
+        /* ── WARN BOX ── */
+        .gui-warn-box {
+          background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);
+          border-radius: 8px; padding: 0.65rem 0.85rem; margin: 0.4rem 0.25rem 0.75rem;
+          font-size: 0.62rem; color: rgba(245,200,100,0.7); line-height: 1.6;
+        }
+
+        /* ── BUTTON ── */
+        .gui-button {
+          background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3);
+          border-radius: 8px; padding: 0.5rem 1rem; cursor: pointer;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: #a78bfa;
+          margin: 0 0.25rem; transition: background 0.15s;
+        }
+        .gui-button:hover { background: rgba(124,58,237,0.3); }
+
+        /* ── COLLAPSED ── */
+        .gui-collapsed {
+          display: flex; align-items: center; justify-content: space-between;
+          background: #1a1a24; border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.5);
+          max-width: 620px; margin: 0 auto;
+        }
+        .gui-collapsed:hover { background: #1e1e2e; }
+      </style>
 
       <div class="a3">
         <a href="https://github.com/" target="_blank" class="gh-link">
@@ -257,151 +690,160 @@
     <aside>
 
       <div class="panel a2">
-        <div class="panel-header">
-          <span class="panel-title">Features</span>
-          <span class="panel-count">7 MODULES</span>
+  <div class="panel-header">
+    <span class="panel-title">Features</span>
+    <span class="panel-count">5 MODULES</span>
+  </div>
+  <div class="panel-body">
+
+    <div class="feat-group">
+      <button class="feat-btn" onclick="toggle(this)">
+        <div class="feat-btn-left">
+          <div class="feat-icon">&#127919;</div>
+          <span class="feat-name">Combat</span>
         </div>
-        <div class="panel-body">
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#127919;</div>
-                <span class="feat-name">Aimbot</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Aim Assist</div>
-                <div class="feat-item">FOV Circle</div>
-                <div class="feat-item">Aim Smoothing</div>
-                <div class="feat-item">Bone Selector</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#128123;</div>
-                <span class="feat-name">Silent Aim</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Redirect bullets to target</div>
-                <div class="feat-item">Adjustable hit chance %</div>
-                <div class="feat-item">Works with all weapons</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#128065;</div>
-                <span class="feat-name">ESP</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Box ESP</div>
-                <div class="feat-item">Name &amp; Health bar</div>
-                <div class="feat-item">Tracers</div>
-                <div class="feat-item">Distance label</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#128230;</div>
-                <span class="feat-name">Chest ESP</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Highlight all loot chests</div>
-                <div class="feat-item">Show chest distance</div>
-                <div class="feat-item">Filter by rarity</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#128300;</div>
-                <span class="feat-name">Item ESP</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Dropped item highlights</div>
-                <div class="feat-item">Gold nugget finder</div>
-                <div class="feat-item">Item name &amp; distance labels</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#128014;</div>
-                <span class="feat-name">Horse Editor</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Speed multiplier</div>
-                <div class="feat-item">Jump boost</div>
-                <div class="feat-item">Infinite stamina</div>
-                <div class="feat-item">Horse ESP</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="toggle(this)">
-              <div class="feat-btn-left">
-                <div class="feat-icon">&#9881;</div>
-                <span class="feat-name">Autofarm</span>
-              </div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content">
-              <div class="feat-content-inner">
-                <div class="feat-item">Auto collect gold</div>
-                <div class="feat-item">Auto loot chests</div>
-                <div class="feat-item">Auto claim bounties</div>
-                <div class="feat-item">Auto sell items</div>
-              </div>
-            </div>
-          </div>
-
+        <span class="feat-arrow">&#9658;</span>
+      </button>
+      <div class="feat-content">
+        <div class="feat-content-inner">
+          <div class="feat-item">Aimbot (Players &amp; Animals)</div>
+          <div class="feat-item">Wall Check</div>
+          <div class="feat-item">No Recoil</div>
+          <div class="feat-item">Infinite Ammo</div>
+          <div class="feat-item">Silent Aim</div>
+          <div class="feat-item">SA: Alive Check</div>
+          <div class="feat-item">SA: Visible Check</div>
+          <div class="feat-item">SA: Bullet Teleport</div>
+          <div class="feat-item">SA: Show Target Highlight</div>
+          <div class="feat-item">SA: Whitelist (per-player)</div>
+          <div class="feat-item">FOV Radius (0–800px)</div>
+          <div class="feat-item">Show FOV Circle</div>
         </div>
       </div>
+    </div>
 
+    <div class="feat-group">
+      <button class="feat-btn" onclick="toggle(this)">
+        <div class="feat-btn-left">
+          <div class="feat-icon">&#128065;</div>
+          <span class="feat-name">Visuals</span>
+        </div>
+        <span class="feat-arrow">&#9658;</span>
+      </button>
+      <div class="feat-content">
+        <div class="feat-content-inner">
+          <div class="feat-item">Player Name ESP</div>
+          <div class="feat-item">Player Health ESP</div>
+          <div class="feat-item">Player Chams (Highlight)</div>
+          <div class="feat-item">Animal ESP</div>
+          <div class="feat-item">Chest ESP (TreasureChest)</div>
+          <div class="feat-item">Item ESP (Skulls, Crowns, Keys, Jewels...)</div>
+          <div class="feat-item">Show Distance on all ESP</div>
+          <div class="feat-item">Configurable ESP ranges (500–20000 studs)</div>
+          <div class="feat-item">Custom colours per ESP type</div>
+          <div class="feat-item">Configurable text size</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat-group">
+      <button class="feat-btn" onclick="toggle(this)">
+        <div class="feat-btn-left">
+          <div class="feat-icon">&#127758;</div>
+          <span class="feat-name">World</span>
+        </div>
+        <span class="feat-arrow">&#9658;</span>
+      </button>
+      <div class="feat-content">
+        <div class="feat-content-inner">
+          <div class="feat-item">Full Bright</div>
+          <div class="feat-item">No Fog</div>
+          <div class="feat-item">TP-Walk (speed multiplier)</div>
+          <div class="feat-item">Instant Interact (0s hold duration)</div>
+          <div class="feat-item">Train arrival / despawn HUD + notify</div>
+          <div class="feat-item">Mansion open / closed HUD + notify</div>
+          <div class="feat-item">Horse Turn Speed slider</div>
+          <div class="feat-item">Horse Whip (auto follow)</div>
+          <div class="feat-item">Bullet Trail colour picker</div>
+          <div class="feat-item">GUI Theme switcher (9 themes)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat-group">
+      <button class="feat-btn" onclick="toggle(this)">
+        <div class="feat-btn-left">
+          <div class="feat-icon">&#11088;</div>
+          <span class="feat-name">AutoFarm</span>
+        </div>
+        <span class="feat-arrow">&#9658;</span>
+      </button>
+      <div class="feat-content">
+        <div class="feat-content-inner">
+          <div class="feat-item">Auto teleport to mansion items</div>
+          <div class="feat-item">Picks up: Skulls, Crowns, Keys, Jewels, Gems</div>
+          <div class="feat-item">Auto sells at OutlawGeneralStore when full</div>
+          <div class="feat-item">Configurable inventory slot limit</div>
+          <div class="feat-item">Noclip while farming</div>
+          <div class="feat-item">On-screen farm status HUD</div>
+          <div class="feat-item">Proximity prompt fire (FirePromptOn)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat-group">
+      <button class="feat-btn" onclick="toggle(this)">
+        <div class="feat-btn-left">
+          <div class="feat-icon">&#128014;</div>
+          <span class="feat-name">Appearance</span>
+        </div>
+        <span class="feat-arrow">&#9658;</span>
+      </button>
+      <div class="feat-content">
+        <div class="feat-content-inner">
+          <div class="feat-item">Body colour &amp; material</div>
+          <div class="feat-item">Eyes colour &amp; material</div>
+          <div class="feat-item">Mane colour &amp; material</div>
+          <div class="feat-item">Saddle colour &amp; material</div>
+          <div class="feat-item">Auto-detects your horse by owner</div>
+          <div class="feat-item">Refresh button + respawn re-link</div>
+          <div class="feat-item">13 material options (Neon, ForceField...)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
       <!-- Download -->
-      <div class="dl-panel a3">
-        <div class="dl-label">&#9670; Get it now &#9670;</div>
-        <div class="dl-title">Download</div>
-        <div class="dl-note">No key system &mdash; inject &amp; execute</div>
-        <button id="dlBtn" class="dl-btn" data-url="https://github.com/" onclick="startDownload()">
-          <span id="dlText">&#8659; Download Script</span>
-        </button>
-        <div class="progress-wrap" id="progressWrap">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div class="dl-status" id="dlStatus">Preparing download&hellip;</div>
-      </div>
+<div class="dl-panel a3">
+  <div class="dl-label">&#9670; Get it now &#9670;</div>
+  <div class="dl-title">Copy script</div>
+  <div class="dl-note">No key system &mdash; inject &amp; execute</div>
+  <button id="dlBtn" class="dl-btn" onclick="copyScript()">
+    <span id="dlText">&#9776; Copy Loadstring</span>
+  </button>
+  <div class="dl-status" id="dlStatus"></div>
+</div>
+
+<script>
+  function copyScript() {
+    const script = `loadstring(game:HttpGet('https://raw.githubusercontent.com/diddenbludden/babybound/refs/heads/main/babybound.lua'))()`;
+    navigator.clipboard.writeText(script).then(() => {
+      const btn  = document.getElementById('dlBtn');
+      const text = document.getElementById('dlText');
+      const stat = document.getElementById('dlStatus');
+      text.textContent = '\u2713 Copied!';
+      stat.textContent = 'Paste into your executor and run.';
+      stat.style.display = 'block';
+      btn.style.opacity = '0.7';
+      setTimeout(() => {
+        text.textContent = '\u9776 Copy Loadstring';
+        stat.style.display = 'none';
+        btn.style.opacity = '1';
+      }, 2500);
+    });
+  }
+</script>
 
       <!-- Stack -->
       <div class="panel a4">
@@ -414,8 +856,8 @@
             Lua / Luau
           </span>
           <span class="stack-pill">&#127918; Roblox API</span>
-          <span class="stack-pill">&#128375; Synapse X</span>
-          <span class="stack-pill">&#128295; Wave</span>
+          <span class="stack-pill">&#128375; Velocity</span>
+          <span class="stack-pill">&#128295; Matcha</span>
         </div>
       </div>
 
@@ -427,6 +869,31 @@
   </footer>
 
   <script>
+    function switchTab(id, btn) {
+      document.querySelectorAll('.gui-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.gui-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+    function tog(el) { el.classList.toggle('on'); }
+    function updSlider(inp, valId) {
+      const el = document.getElementById(valId);
+      if (!el) return;
+      let suffix = '';
+      if (valId.includes('fov') || valId.includes('textsize')) suffix = 'px';
+      else if (valId.includes('range')) suffix = ' studs';
+      else if (valId.includes('tpspeed')) suffix = 'x';
+      el.textContent = inp.value + suffix;
+    }
+    function toggleGui() {
+      const win = document.getElementById('guiWindow');
+      const col = document.getElementById('guiCollapsed');
+      if (win.style.display === 'none') {
+        win.style.display = ''; col.style.display = 'none';
+      } else {
+        win.style.display = 'none'; col.style.display = 'flex';
+      }
+    }
     function toggle(btn) {
       const content = btn.nextElementSibling;
       const arrow   = btn.querySelector('.feat-arrow');
