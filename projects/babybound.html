@@ -8,7 +8,6 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── PAGE THEME ── */
     :root {
       --paper:   #1a1208;
       --paper2:  #120e06;
@@ -19,7 +18,6 @@
       --red:     #a03020;
       --pg-border: rgba(201, 151, 58, 0.3);
 
-      /* GUI theme (overridable) */
       --accent:       #7c5cfc;
       --accent2:      #a78bfa;
       --accent-glow:  rgba(124,92,252,0.3);
@@ -61,7 +59,6 @@
       background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.55) 100%);
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
       border-bottom: 1px solid var(--pg-border);
@@ -84,7 +81,6 @@
       border: 1px solid var(--sepia2); padding: 0.2rem 0.6rem; border-radius: 2px;
     }
 
-    /* ── LAYOUT ── */
     main {
       position: relative; z-index: 1;
       max-width: 1100px; margin: 0 auto;
@@ -96,7 +92,6 @@
     }
     @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
 
-    /* ── POSTER HEADER ── */
     .poster-header {
       border: 2px solid var(--sepia2); padding: 2.5rem 2.5rem 2rem;
       position: relative; background: rgba(26, 18, 8, 0.7); margin-bottom: 2rem;
@@ -125,7 +120,6 @@
     .overview-text { font-size: 0.95rem; line-height: 1.85; color: rgba(240, 217, 154, 0.7); }
     .overview-text strong { color: var(--sepia); font-family: inherit; }
 
-    /* ── GH LINK ── */
     .gh-link {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em;
@@ -134,14 +128,12 @@
     .gh-link:hover { color: var(--sepia); border-color: var(--sepia); }
     .gh-link svg { width: 14px; height: 14px; fill: currentColor; }
 
-    /* ── SIDEBAR PANELS ── */
     .panel { border: 1px solid var(--pg-border); background: rgba(18, 14, 6, 0.8); position: relative; margin-bottom: 1.5rem; }
     .panel-header { padding: 1rem 1.4rem; border-bottom: 1px solid var(--pg-border); display: flex; align-items: center; justify-content: space-between; }
     .panel-title { font-family: 'Rye', cursive; font-size: 0.95rem; color: var(--sepia); letter-spacing: 0.06em; }
     .panel-count { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--sepia2); letter-spacing: 0.1em; }
     .panel-body { padding: 0.5rem 0; }
 
-    /* ── FEATURE ACCORDION ── */
     .feat-group { border-bottom: 1px solid rgba(201,151,58,0.1); }
     .feat-group:last-child { border-bottom: none; }
     .feat-btn {
@@ -162,7 +154,6 @@
     .feat-item { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ink-dim); letter-spacing: 0.06em; line-height: 2; }
     .feat-item::before { content: '→ '; color: var(--sepia2); }
 
-    /* ── DOWNLOAD PANEL ── */
     .dl-panel {
       border: 1px solid var(--sepia2); background: rgba(18, 14, 6, 0.9); padding: 1.6rem; position: relative; margin-bottom: 1.5rem;
     }
@@ -183,18 +174,15 @@
     .dl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
     .dl-status { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--sepia2); letter-spacing: 0.1em; margin-top: 0.6rem; display: none; }
 
-    /* ── STACK PILLS ── */
     .stack-pill {
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ink-dim);
       border: 1px solid rgba(201,151,58,0.2); padding: 0.35rem 0.75rem; margin: 0.25rem;
     }
 
-    /* ── FOOTER ── */
     footer { position: relative; z-index: 1; border-top: 1px solid var(--pg-border); padding: 2rem; text-align: center; }
     footer p { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--sepia2); opacity: 0.5; text-transform: uppercase; }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .a1 { animation: fadeUp 0.6s ease both 0.05s; }
     .a2 { animation: fadeUp 0.6s ease both 0.15s; }
@@ -204,16 +192,12 @@
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-thumb { background: var(--sepia2); }
 
-    /* ════════════════════════════════════
-       GUI WIDGET STYLES
-    ════════════════════════════════════ */
+    /* ════ GUI WIDGET ════ */
     .gui-wrapper {
       position: relative; z-index: 1;
       display: flex; justify-content: flex-start;
       margin-bottom: 2rem;
     }
-
-    /* Ambient background inside widget area */
     .gui-wrapper::before {
       content: '';
       position: absolute; inset: 0;
@@ -222,14 +206,12 @@
         radial-gradient(ellipse 50% 50% at 80% 80%, rgba(34,212,245,0.05) 0%, transparent 60%);
       pointer-events: none; border-radius: 14px;
     }
-
     .scanlines-overlay {
       position: absolute; inset: 0;
       background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
       pointer-events: none; z-index: 0; border-radius: 14px;
     }
 
-    /* ── WINDOW SHELL ── */
     .window {
       position: relative; z-index: 1;
       width: 100%; max-width: 680px;
@@ -243,13 +225,11 @@
         0 0 60px rgba(124,92,252,0.08);
       animation: windowIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
     }
-
     @keyframes windowIn {
       from { opacity: 0; transform: scale(0.93) translateY(20px); }
       to   { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* ── TITLEBAR ── */
     .titlebar {
       display: flex; align-items: center; gap: 12px;
       padding: 14px 18px;
@@ -276,10 +256,8 @@
     .wc-min   { background: #febc2e; }
     .wc-max   { background: #28c840; }
 
-    /* ── GUI BODY LAYOUT ── */
-    .gui-layout { display: flex; height: 500px; }
+    .gui-layout { display: flex; height: 520px; }
 
-    /* ── SIDEBAR ── */
     .gui-sidebar {
       width: 160px; flex-shrink: 0;
       background: var(--surface);
@@ -306,7 +284,6 @@
     }
     .tab-icon { font-size: 13px; width: 16px; text-align: center; }
 
-    /* ── CONTENT ── */
     .gui-content { flex: 1; overflow-y: auto; padding: 14px 16px; background: var(--surface); }
     .gui-content::-webkit-scrollbar { width: 4px; }
     .gui-content::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 2px; }
@@ -316,7 +293,6 @@
     .tab-pane.active { display: block; }
     @keyframes tabFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── SECTION HEADER ── */
     .section {
       display: flex; align-items: center; gap: 8px;
       margin: 14px 0 8px;
@@ -330,7 +306,6 @@
     }
     .section::after { content: ''; flex: 1; height: 1px; background: var(--gui-border); }
 
-    /* ── CONTROL ROW ── */
     .ctrl {
       display: flex; align-items: center;
       padding: 8px 10px; border-radius: var(--radius-sm);
@@ -346,7 +321,6 @@
     }
     .ctrl-label { flex: 1; font-size: 11.5px; color: var(--text-dim); font-weight: 500; letter-spacing: 0.2px; font-family: 'JetBrains Mono', monospace; }
 
-    /* ── TOGGLE ── */
     .toggle-wrap { flex-shrink: 0; }
     .toggle { position: relative; width: 38px; height: 20px; cursor: pointer; user-select: none; display: block; }
     .toggle input { display: none; }
@@ -364,16 +338,14 @@
     }
     .toggle input:checked ~ .toggle-thumb { transform: translateX(18px); }
 
-    /* ── SLIDER ── */
     .slider-wrap { flex: 1; display: flex; flex-direction: column; gap: 4px; }
     .slider-row { display: flex; align-items: center; gap: 8px; }
     .slider-label { font-size: 11.5px; color: var(--text-dim); font-weight: 500; font-family: 'JetBrains Mono', monospace; }
-    .slider-val { font-size: 10px; color: var(--accent2); font-weight: 600; min-width: 36px; text-align: right; font-family: 'JetBrains Mono', monospace; }
+    .slider-val { font-size: 10px; color: var(--accent2); font-weight: 600; min-width: 42px; text-align: right; font-family: 'JetBrains Mono', monospace; }
     input[type=range] { flex: 1; -webkit-appearance: none; height: 4px; background: var(--surface3); border-radius: 2px; outline: none; cursor: pointer; }
     input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); transition: transform 0.1s; }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-    /* ── DROPDOWN ── */
     .dropdown-wrap { flex: 1; }
     .dropdown-label { font-size: 11.5px; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
     select {
@@ -387,13 +359,11 @@
     }
     select:focus { border-color: var(--border-active); }
 
-    /* ── COLOR PICKER ── */
     .color-wrap { display: flex; align-items: center; gap: 8px; flex: 1; }
     .color-label { font-size: 11.5px; color: var(--text-dim); font-weight: 500; flex: 1; font-family: 'JetBrains Mono', monospace; }
     input[type=color] { width: 28px; height: 22px; padding: 2px; background: var(--surface3); border: 1px solid var(--gui-border); border-radius: 4px; cursor: pointer; outline: none; }
     input[type=color]:hover { border-color: var(--border-active); }
 
-    /* ── TEXT INPUT ── */
     .input-wrap { flex: 1; }
     .input-label { font-size: 11.5px; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
     input[type=text] {
@@ -406,7 +376,6 @@
     input[type=text]:focus { border-color: var(--border-active); box-shadow: 0 0 0 3px rgba(124,92,252,0.1); }
     input[type=text]::placeholder { color: var(--text-muted); }
 
-    /* ── BUTTONS ── */
     .btn {
       padding: 8px 14px; border-radius: var(--radius-sm);
       border: 1px solid var(--border-active);
@@ -419,8 +388,9 @@
     .btn:active { transform: translateY(0); }
     .btn-danger { border-color: rgba(255,68,102,0.4); background: linear-gradient(135deg, rgba(255,68,102,0.15), rgba(255,68,102,0.05)); color: #ff4466; }
     .btn-danger:hover { background: linear-gradient(135deg, rgba(255,68,102,0.3), rgba(255,68,102,0.15)); box-shadow: 0 0 12px rgba(255,68,102,0.3); }
+    .btn-gold { border-color: rgba(245,197,66,0.4); background: linear-gradient(135deg, rgba(245,197,66,0.12), rgba(245,197,66,0.04)); color: var(--gold); }
+    .btn-gold:hover { background: linear-gradient(135deg, rgba(245,197,66,0.25), rgba(245,197,66,0.1)); box-shadow: 0 0 12px rgba(245,197,66,0.25); }
 
-    /* ── NOTIFICATIONS ── */
     .notifs { position: fixed; top: 70px; right: 20px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; pointer-events: none; }
     .notif {
       background: var(--surface2); border: 1px solid var(--gui-border);
@@ -435,7 +405,6 @@
     .notif-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 2px; font-family: 'Syne', sans-serif; }
     .notif-body  { font-size: 10.5px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
-    /* ── STATUS BAR ── */
     .statusbar {
       display: flex; align-items: center; gap: 10px;
       padding: 7px 14px; border-top: 1px solid var(--gui-border);
@@ -446,13 +415,12 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .statusbar-right { margin-left: auto; color: var(--accent2); font-weight: 600; }
 
-    /* ── TAGS ── */
     .tag       { font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(124,92,252,0.15); color: var(--accent2); border: 1px solid rgba(124,92,252,0.25); font-weight: 600; letter-spacing: 0.3px; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
     .tag-red   { background:rgba(255,68,102,0.15); color:#ff4466; border-color:rgba(255,68,102,0.25); }
     .tag-green { background:rgba(34,216,143,0.15); color:var(--green); border-color:rgba(34,216,143,0.25); }
     .tag-gold  { background:rgba(245,197,66,0.15); color:var(--gold); border-color:rgba(245,197,66,0.25); }
+    .tag-cyan  { background:rgba(34,212,245,0.15); color:var(--cyan); border-color:rgba(34,212,245,0.25); }
 
-    /* ── RAINBOW ── */
     .rainbow-text {
       font-size: 9px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 5px; border-radius: 3px;
       background: linear-gradient(90deg, #ff4466,#ff8c42,#f5c542,#22d88f,#22d4f5,#7c5cfc,#f542a8);
@@ -460,7 +428,6 @@
       border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;
     }
 
-    /* ── ESP PREVIEW ── */
     .esp-preview {
       position: relative; width: 100%; height: 110px;
       background: linear-gradient(135deg, #0a0a12, #121220);
@@ -470,7 +437,6 @@
     .esp-preview canvas { width: 100%; height: 100%; }
     .esp-label { position: absolute; bottom: 6px; right: 8px; font-size: 9px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
-    /* ── FOV PREVIEW ── */
     .fov-preview {
       width: 100%; height: 80px; background: #080810;
       border: 1px solid var(--gui-border); border-radius: var(--radius-sm);
@@ -479,7 +445,20 @@
     }
     #fovCanvas { width: 100%; height: 100%; }
 
-    /* ── MULTI SELECT ── */
+    /* HUD preview strip */
+    .hud-strip {
+      display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px;
+    }
+    .hud-item {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(10,10,20,0.9); border: 1px solid var(--gui-border);
+      border-radius: 4px; padding: 5px 10px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    }
+    .hud-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .hud-dot.red   { background:#ff5050; box-shadow:0 0 4px #ff5050; }
+    .hud-dot.blue  { background:#82a9ff; box-shadow:0 0 4px #82a9ff; }
+
     .multi-select { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
     .ms-opt {
       padding: 3px 8px; border-radius: 3px; font-size: 10px;
@@ -488,23 +467,52 @@
       font-family: 'JetBrains Mono', monospace;
     }
     .ms-opt.selected { background: rgba(124,92,252,0.2); border-color: var(--border-active); color: var(--accent2); }
+
+    /* shader preview */
+    .shader-preview {
+      width: 100%; height: 70px; border-radius: var(--radius-sm); border: 1px solid var(--gui-border);
+      overflow: hidden; margin-bottom: 8px; position: relative;
+    }
+    #shaderCanvas { width: 100%; height: 100%; }
+    .shader-label { position: absolute; bottom: 5px; right: 7px; font-size: 9px; color: rgba(255,255,255,0.4); font-family: 'JetBrains Mono', monospace; }
+
+    /* avatar editor mini preview */
+    .avatar-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 6px; }
+    .av-slot { background: var(--surface3); border: 1px solid var(--gui-border); border-radius: 4px; padding: 5px 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); }
+    .av-slot-label { color: var(--text-dim); font-size: 9px; margin-bottom: 2px; }
+
+    /* remote log */
+    .remote-log {
+      background:#080810; border:1px solid var(--gui-border); border-radius:var(--radius-sm);
+      padding:8px; font-size:9.5px; color:var(--green); font-family:'JetBrains Mono',monospace;
+      height:80px; overflow-y:auto; margin-bottom:4px; line-height:1.6;
+    }
+
+    /* config row */
+    .cfg-row { display: flex; gap: 4px; margin-bottom: 3px; }
+    .cfg-row .btn { flex: 1; }
+
+    /* farm status */
+    #farmStatus {
+      background:var(--surface3); border:1px solid var(--gui-border); border-radius:var(--radius-sm);
+      padding:10px 12px; font-size:11px; color:var(--text-muted); text-align:center;
+      font-family:'JetBrains Mono',monospace; margin-bottom:8px;
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">80he.</a>
+      <a href="#" class="nav-logo">80he.</a>
       <span class="nav-badge">Westbound &middot; Free</span>
     </div>
   </nav>
 
-  <!-- Global notifications container -->
   <div class="notifs" id="notifs"></div>
 
   <main>
-
-    <!-- ════════ LEFT COLUMN ════════ -->
+    <!-- ════ LEFT COLUMN ════ -->
     <div>
       <div class="poster-header a1">
         <span class="wanted-label">&#9670; Roblox Script &#9670;</span>
@@ -514,8 +522,10 @@
         <div class="divider"></div>
         <p class="overview-text">
           Babybound is the most feature-complete free Lua script for <strong>Westbound</strong>.
-          Precision aimbot, silent aim, full ESP suite, horse editor, and a powerful autofarm &mdash;
-          all in one clean inject-and-run package. No key system. No strings attached.
+          Precision aimbot, silent aim, full ESP suite, enhanced shaders, realistic rain,
+          an in-game avatar editor, horse customiser, remote spy, script executor,
+          and a powerful autofarm &mdash; all in one clean inject-and-run package.
+          No key system. No strings attached.
         </p>
       </div>
 
@@ -524,22 +534,20 @@
         <div class="scanlines-overlay"></div>
         <div class="window" id="mainWindow">
 
-          <!-- Titlebar -->
           <div class="titlebar">
             <div class="titlebar-controls">
               <div class="wc wc-close" onclick="document.getElementById('mainWindow').style.opacity='0.3'"></div>
               <div class="wc wc-min"></div>
-              <div class="wc wc-max"></div>
+              <div class="wc wc-max" onclick="document.getElementById('mainWindow').style.opacity='1'"></div>
             </div>
             <div class="titlebar-icon">⭐</div>
             <div class="titlebar-text">
-              <div class="titlebar-title">BabyBound</div>
-              <div class="titlebar-sub">80he, Greg, Fresh &nbsp;·&nbsp; v2</div>
+              <div class="titlebar-title">BabyBound | 80he, Greg, Fresh</div>
+              <div class="titlebar-sub">v2 &nbsp;·&nbsp; Theme: Default &nbsp;·&nbsp; Config: saved</div>
             </div>
             <div style="font-size:9px;color:var(--text-muted);font-family:'JetBrains Mono',monospace">Toggle: <span style="color:var(--accent2);font-weight:700">K</span></div>
           </div>
 
-          <!-- Body -->
           <div class="gui-layout">
 
             <!-- Sidebar -->
@@ -560,18 +568,18 @@
               <div class="tab-pane active" id="tab-combat">
                 <div class="section">Aimbot Settings</div>
                 <div class="ctrl" id="ctrl-AimPlayers"><span class="ctrl-label">Aim at Players</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AimPlayers')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-AimAnimals"><span class="ctrl-label">Aim at Animals</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AimAnimals')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-AimAnimals"><span class="ctrl-label">Animal Aimbot</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AimAnimals')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-WallCheck"><span class="ctrl-label">Wall Check</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'WallCheck')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-AimTeamCheck"><span class="ctrl-label">Team Check <span class="tag">Skip teammates</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AimTeamCheck')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-NoRecoil"><span class="ctrl-label">No Recoil</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'NoRecoil')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-InfAmmo"><span class="ctrl-label">Inf Ammo</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'InfAmmo')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-HitboxExtender"><span class="ctrl-label">Hitbox Extender</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'HitboxExtender')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl">
                   <div class="slider-wrap">
                     <div class="slider-row"><span class="slider-label">Hitbox Size</span><span class="slider-val" id="val-HitboxSize">5 st</span></div>
-                    <input type="range" min="2" max="30" step="0.5" value="5" oninput="sliderUpdate('HitboxSize',this.value,'st')">
+                    <input type="range" min="2" max="30" step="0.5" value="5" oninput="sliderUpdate('HitboxSize',this.value,' st')">
                   </div>
                 </div>
-                <div class="ctrl" id="ctrl-NoRecoil"><span class="ctrl-label">No Recoil</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'NoRecoil')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-InfAmmo"><span class="ctrl-label">Inf Ammo</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'InfAmmo')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
 
                 <div class="section">Silent Aim</div>
                 <div class="ctrl" id="ctrl-SilentAim"><span class="ctrl-label">Silent Aim</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'SilentAim')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
@@ -585,7 +593,7 @@
                   <div class="multi-select">
                     <div class="ms-opt" onclick="this.classList.toggle('selected')">Player1</div>
                     <div class="ms-opt" onclick="this.classList.toggle('selected')">Player2</div>
-                    <div class="ms-opt" onclick="this.classList.toggle('selected')">Player3</div>
+                    <div class="ms-opt selected" onclick="this.classList.toggle('selected')">Player3</div>
                   </div>
                 </div>
 
@@ -594,7 +602,7 @@
                 <div class="ctrl">
                   <div class="slider-wrap">
                     <div class="slider-row"><span class="slider-label">FOV Radius</span><span class="slider-val" id="val-FOV">150 px</span></div>
-                    <input type="range" min="0" max="400" step="1" value="150" id="fovSlider" oninput="sliderUpdate('FOV',this.value,'px');drawFOV()">
+                    <input type="range" min="0" max="800" step="1" value="150" id="fovSlider" oninput="sliderUpdate('FOV',this.value,' px');drawFOV()">
                   </div>
                 </div>
                 <div class="ctrl" id="ctrl-ShowFOV"><span class="ctrl-label">Show FOV Circle</span><label class="toggle"><input type="checkbox" id="showFOVToggle" onchange="guiToggle(this,'ShowFOV');drawFOV()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
@@ -604,13 +612,14 @@
               <div class="tab-pane" id="tab-visuals">
                 <div class="esp-preview"><canvas id="espCanvas"></canvas><div class="esp-label">Live Preview</div></div>
                 <div class="section">Player ESP</div>
-                <div class="ctrl" id="ctrl-NameESP"><span class="ctrl-label">Name ESP</span><label class="toggle"><input type="checkbox" id="t-NameESP" onchange="guiToggle(this,'NameESP');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-RainbowName"><span class="ctrl-label">Rainbow Name ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" id="t-RainbowName" onchange="guiToggle(this,'RainbowName');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-HealthESP"><span class="ctrl-label">Health ESP</span><label class="toggle"><input type="checkbox" id="t-HealthESP" onchange="guiToggle(this,'HealthESP');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-Chams"><span class="ctrl-label">Chams <span class="tag">Highlight</span></span><label class="toggle"><input type="checkbox" id="t-Chams" onchange="guiToggle(this,'Chams');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-BoxESP"><span class="ctrl-label">Box ESP</span><label class="toggle"><input type="checkbox" id="t-BoxESP" onchange="guiToggle(this,'BoxESP');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-RainbowBox"><span class="ctrl-label">Rainbow Box ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" id="t-RainbowBox" onchange="guiToggle(this,'RainbowBox');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl"><div class="color-wrap"><span class="color-label">Box ESP Color</span><input type="color" id="c-BoxColor" value="#ff0044" oninput="drawESP()"></div></div>
+                <div class="ctrl" id="ctrl-NameESP"><span class="ctrl-label">Name ESP</span><label class="toggle"><input type="checkbox" id="t-NameESP" onchange="guiToggle(this,'NameESP');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-RainbowName"><span class="ctrl-label">Rainbow Name ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" id="t-RainbowName" onchange="guiToggle(this,'RainbowName');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl"><div class="color-wrap"><span class="color-label">Player ESP Color</span><input type="color" id="c-PlayerColor" value="#ff0000" oninput="drawESP()"></div></div>
+                <div class="ctrl" id="ctrl-HealthESP"><span class="ctrl-label">Health ESP</span><label class="toggle"><input type="checkbox" id="t-HealthESP" onchange="guiToggle(this,'HealthESP');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-Chams"><span class="ctrl-label">Chams <span class="tag">Highlight</span></span><label class="toggle"><input type="checkbox" id="t-Chams" onchange="guiToggle(this,'Chams');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-SkeletonESP"><span class="ctrl-label">Skeleton ESP</span><label class="toggle"><input type="checkbox" id="t-SkeletonESP" onchange="guiToggle(this,'SkeletonESP');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-RainbowSkel"><span class="ctrl-label">Rainbow Skeleton <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" id="t-RainbowSkel" onchange="guiToggle(this,'RainbowSkel');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl"><div class="color-wrap"><span class="color-label">Skeleton Color</span><input type="color" id="c-SkelColor" value="#ffffff" oninput="drawESP()"></div></div>
@@ -620,54 +629,130 @@
                 <div class="ctrl" id="ctrl-Tracer"><span class="ctrl-label">Tracer ESP</span><label class="toggle"><input type="checkbox" id="t-Tracer" onchange="guiToggle(this,'Tracer');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-RainbowTracer"><span class="ctrl-label">Rainbow Tracer <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" id="t-RainbowTracer" onchange="guiToggle(this,'RainbowTracer');drawESP()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl"><div class="color-wrap"><span class="color-label">Tracer Color</span><input type="color" id="c-TracerColor" value="#00ffff" oninput="drawESP()"></div></div>
-                <div class="ctrl" id="ctrl-ESPTeamCheck"><span class="ctrl-label">Team Check <span class="tag">Enemies only</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ESPTeamCheck')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-
-                <div class="section">Animal / World ESP</div>
-                <div class="ctrl" id="ctrl-AnimalESP"><span class="ctrl-label">Animal ESP</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AnimalESP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-RainbowAnimal"><span class="ctrl-label">Rainbow Animal ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RainbowAnimal')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-ChestESP"><span class="ctrl-label">Chest ESP <span class="tag tag-gold">💰</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ChestESP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-ItemESP"><span class="ctrl-label">Item ESP <span class="tag tag-green">💎</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ItemESP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-ESPTeamCheck"><span class="ctrl-label">ESP Team Check <span class="tag">Enemies only</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ESPTeamCheck')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-ShowDistance"><span class="ctrl-label">Show Distance</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ShowDistance')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl">
                   <div class="slider-wrap">
                     <div class="slider-row"><span class="slider-label">Text Size</span><span class="slider-val" id="val-TextSize">12 px</span></div>
-                    <input type="range" min="8" max="20" step="1" value="12" oninput="sliderUpdate('TextSize',this.value,'px')">
+                    <input type="range" min="8" max="20" step="1" value="12" oninput="sliderUpdate('TextSize',this.value,' px')">
+                  </div>
+                </div>
+
+                <div class="section">Animal ESP</div>
+                <div class="ctrl" id="ctrl-AnimalESP"><span class="ctrl-label">Animal ESP</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AnimalESP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-RainbowAnimal"><span class="ctrl-label">Rainbow Animal ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RainbowAnimal')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl"><div class="color-wrap"><span class="color-label">Animal ESP Color</span><input type="color" value="#ffa500"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Max Animal Range</span><span class="slider-val" id="val-AnimalRange">10000 st</span></div>
+                    <input type="range" min="500" max="20000" step="100" value="10000" oninput="sliderUpdate('AnimalRange',this.value,' st')">
+                  </div>
+                </div>
+
+                <div class="section">World ESP</div>
+                <div class="ctrl" id="ctrl-ChestESP"><span class="ctrl-label">Chest ESP <span class="tag tag-gold">💰</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ChestESP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-RainbowChest"><span class="ctrl-label">Rainbow Chest ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RainbowChest')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl"><div class="color-wrap"><span class="color-label">Chest ESP Color</span><input type="color" value="#ffd700"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Max Chest Range</span><span class="slider-val" id="val-ChestRange">10000 st</span></div>
+                    <input type="range" min="500" max="20000" step="100" value="10000" oninput="sliderUpdate('ChestRange',this.value,' st')">
+                  </div>
+                </div>
+                <div class="ctrl" id="ctrl-ItemESP"><span class="ctrl-label">Item ESP <span class="tag tag-green">💎</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'ItemESP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-RainbowItem"><span class="ctrl-label">Rainbow Item ESP <span class="rainbow-text">RAINBOW</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RainbowItem')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl"><div class="color-wrap"><span class="color-label">Item ESP Color</span><input type="color" value="#00ffc8"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Max Item Range</span><span class="slider-val" id="val-ItemRange">10000 st</span></div>
+                    <input type="range" min="500" max="20000" step="100" value="10000" oninput="sliderUpdate('ItemRange',this.value,' st')">
                   </div>
                 </div>
               </div>
 
               <!-- ══ PLAYER ══ -->
               <div class="tab-pane" id="tab-player">
-                <div class="section">Movement</div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Walk Speed</span><span class="slider-val" id="val-WalkSpeed">16</span></div><input type="range" min="16" max="500" step="1" value="16" oninput="sliderUpdate('WalkSpeed',this.value,'')"></div></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Jump Height</span><span class="slider-val" id="val-JumpHeight">50</span></div><input type="range" min="50" max="500" step="5" value="50" oninput="sliderUpdate('JumpHeight',this.value,'')"></div></div>
-                <div class="ctrl" id="ctrl-Flight"><span class="ctrl-label">✈️ Flight</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'Flight')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Flight Speed</span><span class="slider-val" id="val-FlightSpeed">50</span></div><input type="range" min="10" max="300" step="5" value="50" oninput="sliderUpdate('FlightSpeed',this.value,'')"></div></div>
+                <div class="section">Player Settings</div>
                 <div class="ctrl" id="ctrl-Noclip"><span class="ctrl-label">Noclip <span class="tag tag-red">PHASE</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'Noclip')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-AntiVoid"><span class="ctrl-label">Anti-Void <span class="tag tag-green">SAFE</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AntiVoid')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-HitboxP"><span class="ctrl-label">Hitbox Extender</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'HitboxP')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Hitbox Size</span><span class="slider-val" id="val-HitboxSizeP">5 st</span></div>
+                    <input type="range" min="2" max="30" step="0.5" value="5" oninput="sliderUpdate('HitboxSizeP',this.value,' st')">
+                  </div>
+                </div>
+
+                <div class="section">Movement</div>
+                <div class="ctrl" id="ctrl-TPWalk"><span class="ctrl-label">Walk Speed (TP Mode)</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'TPWalk')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Walkspeed</span><span class="slider-val" id="val-TPWalkSpeed">0.1 x</span></div>
+                    <input type="range" min="0.1" max="15" step="0.1" value="0.1" oninput="sliderUpdate('TPWalkSpeed',this.value,' x')">
+                  </div>
+                </div>
+                <div class="ctrl" id="ctrl-Flight"><span class="ctrl-label">✈️ Flight</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'Flight')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Flight Speed</span><span class="slider-val" id="val-FlightSpeed">50</span></div>
+                    <input type="range" min="10" max="300" step="5" value="50" oninput="sliderUpdate('FlightSpeed',this.value,'')">
+                  </div>
+                </div>
 
                 <div class="section">Camera</div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Field of View</span><span class="slider-val" id="val-CamFOV">70 °</span></div><input type="range" min="70" max="120" step="1" value="70" oninput="sliderUpdate('CamFOV',this.value,'°')"></div></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Max Zoom</span><span class="slider-val" id="val-MaxZoom">400 st</span></div><input type="range" min="0" max="2000" step="10" value="400" oninput="sliderUpdate('MaxZoom',this.value,' st')"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Field of View</span><span class="slider-val" id="val-CamFOV">70 °</span></div>
+                    <input type="range" min="20" max="120" step="1" value="70" oninput="sliderUpdate('CamFOV',this.value,' °')">
+                  </div>
+                </div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Max Zoom Distance</span><span class="slider-val" id="val-MaxZoom">7 st</span></div>
+                    <input type="range" min="7" max="1000" step="1" value="7" oninput="sliderUpdate('MaxZoom',this.value,' st')">
+                  </div>
+                </div>
               </div>
 
               <!-- ══ WORLD ══ -->
               <div class="tab-pane" id="tab-world">
+                <div class="section">HUD</div>
+                <div class="hud-strip">
+                  <div class="hud-item"><div class="hud-dot red"></div><span style="color:#ff5050" id="trainHud">🚂 Train active: 0:00</span></div>
+                  <div class="hud-item"><div class="hud-dot blue"></div><span style="color:#82a9ff" id="mansionHud">🏚️ Mansion closed: 0:00 ago</span></div>
+                </div>
+
                 <div class="section">Lighting</div>
-                <div class="ctrl" id="ctrl-EnhancedShaders"><span class="ctrl-label">✨ Enhanced Shaders</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'EnhancedShaders')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl" id="ctrl-RealisticRain"><span class="ctrl-label">🌧️ Realistic Rain</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RealisticRain')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="shader-preview"><canvas id="shaderCanvas"></canvas><div class="shader-label">Shader Preview</div></div>
+                <div class="ctrl" id="ctrl-EnhancedShaders"><span class="ctrl-label">✨ Enhanced Shaders <span class="tag tag-cyan">DAY/NIGHT</span></span><label class="toggle"><input type="checkbox" id="t-Shaders" onchange="guiToggle(this,'EnhancedShaders');drawShader()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl" id="ctrl-RealisticRain"><span class="ctrl-label">🌧️ Realistic Rain <span class="tag">1500 drops</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RealisticRain')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-FullBright"><span class="ctrl-label">☀️ Full Bright</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'FullBright')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-NoFog"><span class="ctrl-label">🌫️ No Fog</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'NoFog')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">🕐 Time of Day</span><span class="slider-val" id="val-TimeOfDay">14:00</span></div><input type="range" min="0" max="24" step="0.5" value="14" oninput="updateTimeOfDay(this.value)"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">🕐 Time of Day</span><span class="slider-val" id="val-TimeOfDay">14:00</span></div>
+                    <input type="range" min="0" max="24" step="0.5" value="14" oninput="updateTimeOfDay(this.value)">
+                  </div>
+                </div>
+                <div class="ctrl" id="ctrl-LockTime"><span class="ctrl-label">Lock Time of Day</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'LockTime')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
 
                 <div class="section">Utility</div>
-                <div class="ctrl" id="ctrl-TPWalk"><span class="ctrl-label">TP-Walk</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'TPWalk')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">TP Speed</span><span class="slider-val" id="val-TPSpeed">2 x</span></div><input type="range" min="1" max="15" step="1" value="2" oninput="sliderUpdate('TPSpeed',this.value,' x')"></div></div>
                 <div class="ctrl" id="ctrl-Interact"><span class="ctrl-label">Instant Interact</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'Interact')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Gravity</span><span class="slider-val" id="val-Gravity">196</span></div><input type="range" min="0" max="400" step="5" value="196" oninput="sliderUpdate('Gravity',this.value,'')"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Gravity</span><span class="slider-val" id="val-Gravity">196</span></div>
+                    <input type="range" min="0" max="400" step="1" value="196" oninput="sliderUpdate('Gravity',this.value,'')">
+                  </div>
+                </div>
 
                 <div class="section">Horse</div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">🐴 Turn Speed</span><span class="slider-val" id="val-HorseTurn">26</span></div><input type="range" min="0" max="420" step="1" value="26" oninput="sliderUpdate('HorseTurn',this.value,'')"></div></div>
-                <div class="ctrl" id="ctrl-HorseWhip"><span class="ctrl-label">🐴 Horse Whip</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'HorseWhip')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">🐴 Turn Speed</span><span class="slider-val" id="val-HorseTurn">26</span></div>
+                    <input type="range" min="0" max="420" step="1" value="26" oninput="sliderUpdate('HorseTurn',this.value,'')">
+                  </div>
+                </div>
+                <div class="ctrl" id="ctrl-HorseWhip"><span class="ctrl-label">🐴 Horse Whip <span class="tag">Follow mode</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'HorseWhip')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
               </div>
 
               <!-- ══ AUTOFARM ══ -->
@@ -678,13 +763,16 @@
                   <div class="input-wrap" style="width:100%"><div class="input-label">Inventory Slots</div><input type="text" placeholder="Enter slot count (e.g. 24)" value="24"></div>
                 </div>
                 <div class="section">Farm Status</div>
-                <div style="background:var(--surface3);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text-muted);text-align:center;font-family:'JetBrains Mono',monospace;" id="farmStatus">⏳ AutoFarm is off</div>
+                <div id="farmStatus">⏳ AutoFarm is off</div>
                 <div class="section">Item Tracking</div>
                 <div style="display:flex;flex-direction:column;gap:3px;">
                   <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>💎</span><span style="flex:1;color:var(--text-dim)">Diamond</span><span class="tag tag-green">Tracked</span></div>
+                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>❤️</span><span style="flex:1;color:var(--text-dim)">Ruby</span><span class="tag tag-green">Tracked</span></div>
+                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>💚</span><span style="flex:1;color:var(--text-dim)">Emerald</span><span class="tag tag-green">Tracked</span></div>
                   <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>👑</span><span style="flex:1;color:var(--text-dim)">Gold Crown</span><span class="tag tag-green">Tracked</span></div>
-                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>🔑</span><span style="flex:1;color:var(--text-dim)">Gold Key</span><span class="tag tag-green">Tracked</span></div>
-                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>💀</span><span style="flex:1;color:var(--text-dim)">Gold Skull</span><span class="tag tag-green">Tracked</span></div>
+                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>🔑</span><span style="flex:1;color:var(--text-dim)">Gold Key / Silver Key</span><span class="tag tag-green">Tracked</span></div>
+                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>💀</span><span style="flex:1;color:var(--text-dim)">Gold / Silver Skull</span><span class="tag tag-green">Tracked</span></div>
+                  <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>📿</span><span style="flex:1;color:var(--text-dim)">Gold / Silver Jewelry</span><span class="tag tag-green">Tracked</span></div>
                   <div style="background:var(--surface2);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:6px 10px;font-size:10.5px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;"><span>💰</span><span style="flex:1;color:var(--text-dim)">Treasure Chest</span><span class="tag">ESP Only</span></div>
                 </div>
               </div>
@@ -702,59 +790,121 @@
                     </select>
                   </div>
                 </div>
+
                 <div class="section">Gun</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Bolt/Hammer</div><input type="color" value="#505050" style="width:100%;height:30px;"></div>
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Handle</div><input type="color" value="#1e1408" style="width:100%;height:30px;"></div>
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Metal</div><input type="color" value="#787878" style="width:100%;height:30px;"></div>
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Cylinder</div><input type="color" value="#646464" style="width:100%;height:30px;"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;">
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Bolt/Hammer</div><input type="color" value="#505050" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>Metal</option><option>SmoothPlastic</option><option>Neon</option></select></div>
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Handle</div><input type="color" value="#1e1408" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>SmoothPlastic</option><option>Wood</option><option>Fabric</option></select></div>
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Metal</div><input type="color" value="#787878" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>Metal</option><option>DiamondPlate</option><option>Neon</option></select></div>
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Cylinder</div><input type="color" value="#646464" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>Metal</option><option>Glass</option><option>Neon</option></select></div>
                 </div>
+
                 <div class="section">Bullet FX</div>
                 <div class="ctrl"><div class="color-wrap"><span class="color-label">Bullet Trail Colour</span><input type="color" value="#ff0080" id="bulletColorPicker"></div></div>
+
+                <div class="section">Avatar Changer</div>
+                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;">
+                  <div class="input-wrap" style="width:100%"><div class="input-label">Target User ID</div><input type="text" placeholder="Enter Roblox User ID"></div>
+                </div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Avatar','Avatar applied!','#22d88f')">Apply Avatar</button></div>
+                <div class="ctrl"><button class="btn btn-danger" onclick="guiNotify('Avatar','Reset to your original avatar.')">Reset to My Avatar</button></div>
+
+                <div class="section">Avatar Editor</div>
+                <div style="background:var(--surface3);border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:10px;margin-bottom:4px;">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;">EDITOR TABS: Clothing · Scales · Colors · Import</div>
+                  <div class="avatar-slots">
+                    <div class="av-slot"><div class="av-slot-label">Shirt ID</div><input type="text" placeholder="Asset ID" style="margin-top:2px"></div>
+                    <div class="av-slot"><div class="av-slot-label">Pants ID</div><input type="text" placeholder="Asset ID" style="margin-top:2px"></div>
+                    <div class="av-slot"><div class="av-slot-label">Hat/Hair Acc</div><input type="text" placeholder="Asset ID" style="margin-top:2px"></div>
+                    <div class="av-slot"><div class="av-slot-label">Face ID</div><input type="text" placeholder="Asset ID" style="margin-top:2px"></div>
+                  </div>
+                  <div class="cfg-row" style="margin-top:4px">
+                    <button class="btn btn-gold" onclick="guiNotify('Avatar Editor','Applied to character!','#f5c542')" style="font-size:10px;padding:5px">✅ Apply</button>
+                    <button class="btn btn-danger" onclick="guiNotify('Avatar Editor','Accessories cleared.')" style="font-size:10px;padding:5px">🗑 Clear Accs</button>
+                  </div>
+                </div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Avatar Editor','Editor opened!','#a78bfa')">Open Avatar Editor</button></div>
+
                 <div class="section">Mesh / Accessory Spoofer</div>
                 <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;"><div class="input-wrap" style="width:100%"><div class="input-label">Spoof Mesh ID</div><input type="text" placeholder="Enter mesh asset ID"></div></div>
                 <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;"><div class="input-wrap" style="width:100%"><div class="input-label">Spoof Texture ID</div><input type="text" placeholder="Enter texture asset ID"></div></div>
-                <div class="ctrl"><button class="btn" onclick="guiNotify('Spoofer','Mesh/Texture applied! (Preview only)')">Apply Spoofer</button></div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Spoofer','Mesh/Texture applied!')">Apply Spoofer</button></div>
+
                 <div class="section">Horse</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Body</div><input type="color" value="#ffffff" style="width:100%;height:26px;"></div>
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Eyes</div><input type="color" value="#ffffff" style="width:100%;height:26px;"></div>
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Mane</div><input type="color" value="#ffffff" style="width:100%;height:26px;"></div>
-                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label">Saddle</div><input type="color" value="#ffffff" style="width:100%;height:26px;"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;">
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Body</div><input type="color" value="#ffffff" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>SmoothPlastic</option><option>Neon</option><option>ForceField</option></select></div>
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Eyes</div><input type="color" value="#ffffff" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>SmoothPlastic</option><option>Neon</option><option>Glass</option></select></div>
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Mane</div><input type="color" value="#ffffff" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>SmoothPlastic</option><option>Fabric</option><option>Neon</option></select></div>
+                  <div class="ctrl" style="flex-direction:column;gap:4px;"><div class="ctrl-label" style="font-size:10px">Saddle</div><input type="color" value="#ffffff" style="width:100%;height:26px;"><select style="margin-top:2px;font-size:10px;"><option>SmoothPlastic</option><option>Leather</option><option>Fabric</option></select></div>
                 </div>
-                <div class="ctrl" style="margin-top:4px;"><button class="btn" onclick="guiNotify('Horse','Horse refreshed! (Preview only)')">Refresh Horse</button></div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Horse','Horse refreshed!')">Refresh Horse</button></div>
               </div>
 
               <!-- ══ MISC ══ -->
               <div class="tab-pane" id="tab-misc">
+                <div class="section">Config</div>
+                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;">
+                  <div class="input-wrap" style="width:100%"><div class="input-label">Config Name</div><input type="text" id="configNameInput" placeholder="Config name (default: Config)" value="Config"></div>
+                </div>
+                <div class="cfg-row">
+                  <button class="btn btn-gold" onclick="guiNotify('Config','Saved as &quot;'+document.getElementById('configNameInput').value+'&quot;','#f5c542')" style="font-size:10px">💾 Save</button>
+                  <button class="btn" onclick="guiNotify('Config','Loaded &quot;'+document.getElementById('configNameInput').value+'&quot;')" style="font-size:10px">📂 Load</button>
+                  <button class="btn btn-danger" onclick="guiNotify('Config','Deleted.')" style="font-size:10px">🗑 Delete</button>
+                </div>
+
+                <div class="section">Miscellaneous</div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Dex','Explorer loaded!')">Load Explorer (Dex)</button></div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Infinite Yield','Loaded!')">Load Infinite Yield</button></div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Tools','Dex + Infinite Yield loaded!')">Load Dex + Infinite Yield</button></div>
+
+                <div class="section">Script Executor</div>
+                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;">
+                  <div class="input-wrap" style="width:100%"><div class="input-label">Script Input</div><input type="text" id="scriptInput" placeholder="Paste a URL or Lua code"></div>
+                </div>
+                <div class="cfg-row">
+                  <button class="btn" onclick="guiNotify('Executor','Executed URL!')" style="font-size:10px">▶ Execute URL</button>
+                  <button class="btn" onclick="guiNotify('Executor','Executed Lua!')" style="font-size:10px">▶ Execute Lua</button>
+                </div>
+
                 <div class="section">Server</div>
                 <div class="ctrl"><button class="btn" onclick="guiNotify('Server','Rejoining same server...')">Rejoin Same Server</button></div>
                 <div class="ctrl"><button class="btn" onclick="guiNotify('Server Hop','Finding new server...')">Server Hop</button></div>
-                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;"><div class="input-wrap" style="width:100%"><div class="input-label">Server Snipe — Target Player Name</div><input type="text" id="snipeInput" placeholder="Enter player name"></div></div>
-                <div class="ctrl"><button class="btn" onclick="guiNotify('Server Snipe','Searching for: '+document.getElementById('snipeInput').value)">Server Snipe (Follow Player)</button></div>
+                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;">
+                  <div class="input-wrap" style="width:100%"><div class="input-label">Server Snipe — Target Player Name</div><input type="text" id="snipeInput" placeholder="Enter player name"></div>
+                </div>
+                <div class="ctrl"><button class="btn" onclick="guiNotify('Server Snipe','Searching for: '+(document.getElementById('snipeInput').value||'...')+'...')">Server Snipe (Follow Player)</button></div>
+
                 <div class="section">Utility</div>
                 <div class="ctrl" id="ctrl-AntiAFK"><span class="ctrl-label">Anti-AFK</span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'AntiAFK')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
                 <div class="ctrl" id="ctrl-FakeLag"><span class="ctrl-label">Fake Lag <span class="tag tag-red">DESYNC</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'FakeLag')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div class="ctrl"><div class="slider-wrap"><div class="slider-row"><span class="slider-label">Fake Lag Strength</span><span class="slider-val" id="val-FakeLag">10</span></div><input type="range" min="1" max="50" step="1" value="10" oninput="sliderUpdate('FakeLag',this.value,'')"></div></div>
+                <div class="ctrl">
+                  <div class="slider-wrap">
+                    <div class="slider-row"><span class="slider-label">Fake Lag Strength</span><span class="slider-val" id="val-FakeLag">10</span></div>
+                    <input type="range" min="1" max="50" step="1" value="10" oninput="sliderUpdate('FakeLag',this.value,'')">
+                  </div>
+                </div>
+
                 <div class="section">Remote Spy</div>
-                <div class="ctrl" id="ctrl-RemoteSpy"><span class="ctrl-label">Remote Spy <span class="tag">NETWORK</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RemoteSpy')"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
-                <div id="remoteLog" style="display:none;background:#080810;border:1px solid var(--gui-border);border-radius:var(--radius-sm);padding:8px;font-size:9.5px;color:var(--green);font-family:'JetBrains Mono',monospace;height:80px;overflow-y:auto;margin-bottom:4px;line-height:1.6;">
+                <div class="ctrl" id="ctrl-RemoteSpy"><span class="ctrl-label">Remote Spy <span class="tag tag-cyan">NETWORK</span></span><label class="toggle"><input type="checkbox" onchange="guiToggle(this,'RemoteSpy');document.getElementById('remoteLogDiv').style.display=this.checked?'block':'none'"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+                <div class="remote-log" id="remoteLogDiv" style="display:none">
                   [FireServer] Inventory("Sell")<br>
                   [FireServer] PlayerData("GetStats")<br>
                   [InvokeServer] GeneralEvents.SpawnHorse("CallHorse")<br>
                   [FireServer] Chat("Hey!")<br>
+                  [FireServer] GeneralEvents.Inventory("Sell")<br>
                 </div>
-                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;"><div class="input-wrap" style="width:100%"><div class="input-label">Block Remote (by name)</div><input type="text" placeholder="Enter remote name to block"></div></div>
+                <div class="ctrl" style="flex-direction:column;align-items:flex-start;gap:4px;">
+                  <div class="input-wrap" style="width:100%"><div class="input-label">Block Remote (by name)</div><input type="text" placeholder="Enter remote name to block"></div>
+                </div>
                 <div class="ctrl"><button class="btn btn-danger" onclick="guiNotify('Remote Firewall','All blocks cleared.')">Clear Remote Firewall</button></div>
               </div>
 
             </div><!-- /gui-content -->
           </div><!-- /gui-layout -->
 
-          <!-- Status Bar -->
           <div class="statusbar">
             <div class="status-dot"></div>
-            <span id="statusText">Loaded · BabyBound v2</span>
+            <span id="statusText">Loaded · BabyBound</span>
             <span class="statusbar-right" id="statusRight">0 active</span>
           </div>
 
@@ -769,104 +919,138 @@
       </div>
     </div><!-- /left column -->
 
-    <!-- ════════ RIGHT SIDEBAR ════════ -->
+    <!-- ════ RIGHT SIDEBAR ════ -->
     <aside>
 
       <div class="panel a2">
         <div class="panel-header">
           <span class="panel-title">Features</span>
-          <span class="panel-count">5 MODULES</span>
+          <span class="panel-count">7 MODULES</span>
         </div>
         <div class="panel-body">
 
           <div class="feat-group">
             <button class="feat-btn" onclick="accordionToggle(this)">
-              <div class="feat-btn-left"><div class="feat-icon">&#127919;</div><span class="feat-name">Combat</span></div>
+              <div class="feat-btn-left"><div class="feat-icon">🎯</div><span class="feat-name">Combat</span></div>
               <span class="feat-arrow">&#9658;</span>
             </button>
             <div class="feat-content"><div class="feat-content-inner">
               <div class="feat-item">Aimbot (Players &amp; Animals)</div>
               <div class="feat-item">Wall Check</div>
-              <div class="feat-item">No Recoil</div>
-              <div class="feat-item">Infinite Ammo</div>
-              <div class="feat-item">Silent Aim</div>
-              <div class="feat-item">SA: Alive Check</div>
-              <div class="feat-item">SA: Visible Check</div>
+              <div class="feat-item">No Recoil (StateConfig hook)</div>
+              <div class="feat-item">Infinite Ammo (Consumables hook)</div>
+              <div class="feat-item">Team Check (skip teammates)</div>
+              <div class="feat-item">Hitbox Extender (2–30 studs)</div>
+              <div class="feat-item">Silent Aim (namecall hook)</div>
+              <div class="feat-item">SA: Alive / Visible / Team Check</div>
               <div class="feat-item">SA: Bullet Teleport</div>
               <div class="feat-item">SA: Show Target Highlight</div>
-              <div class="feat-item">SA: Whitelist (per-player)</div>
-              <div class="feat-item">FOV Radius (0–800px)</div>
+              <div class="feat-item">SA: Per-player Whitelist</div>
+              <div class="feat-item">FOV Radius (0–800 px)</div>
               <div class="feat-item">Show FOV Circle</div>
             </div></div>
           </div>
 
           <div class="feat-group">
             <button class="feat-btn" onclick="accordionToggle(this)">
-              <div class="feat-btn-left"><div class="feat-icon">&#128065;</div><span class="feat-name">Visuals</span></div>
+              <div class="feat-btn-left"><div class="feat-icon">👁️</div><span class="feat-name">Visuals</span></div>
               <span class="feat-arrow">&#9658;</span>
             </button>
             <div class="feat-content"><div class="feat-content-inner">
-              <div class="feat-item">Player Name ESP</div>
-              <div class="feat-item">Player Health ESP</div>
-              <div class="feat-item">Player Chams (Highlight)</div>
-              <div class="feat-item">Animal ESP</div>
-              <div class="feat-item">Chest ESP (TreasureChest)</div>
-              <div class="feat-item">Item ESP (Skulls, Crowns, Keys, Jewels...)</div>
+              <div class="feat-item">Player Name / Health / Chams ESP</div>
+              <div class="feat-item">Box ESP (2D bounding box)</div>
+              <div class="feat-item">Skeleton ESP (R6 &amp; R15)</div>
+              <div class="feat-item">Head Dot ESP</div>
+              <div class="feat-item">Tracer ESP</div>
+              <div class="feat-item">Animal ESP (all variants)</div>
+              <div class="feat-item">Chest ESP (auto-hides when opened)</div>
+              <div class="feat-item">Item ESP (Skulls, Crowns, Keys, Jewels, Gems)</div>
+              <div class="feat-item">Rainbow mode per ESP type</div>
+              <div class="feat-item">Custom colour per ESP type</div>
               <div class="feat-item">Show Distance on all ESP</div>
-              <div class="feat-item">Configurable ESP ranges (500–20000 studs)</div>
-              <div class="feat-item">Custom colours per ESP type</div>
+              <div class="feat-item">Configurable ranges 500–20 000 st</div>
               <div class="feat-item">Configurable text size</div>
+              <div class="feat-item">Team Check (enemies only)</div>
             </div></div>
           </div>
 
           <div class="feat-group">
             <button class="feat-btn" onclick="accordionToggle(this)">
-              <div class="feat-btn-left"><div class="feat-icon">&#127758;</div><span class="feat-name">World</span></div>
+              <div class="feat-btn-left"><div class="feat-icon">🌐</div><span class="feat-name">World</span></div>
               <span class="feat-arrow">&#9658;</span>
             </button>
             <div class="feat-content"><div class="feat-content-inner">
+              <div class="feat-item">✨ Enhanced Shaders (dynamic day/night)</div>
+              <div class="feat-item">🌧️ Realistic Rain (1 500 beam drops)</div>
               <div class="feat-item">Full Bright</div>
               <div class="feat-item">No Fog</div>
-              <div class="feat-item">TP-Walk (speed multiplier)</div>
-              <div class="feat-item">Instant Interact (0s hold duration)</div>
-              <div class="feat-item">Train arrival / despawn HUD + notify</div>
-              <div class="feat-item">Mansion open / closed HUD + notify</div>
+              <div class="feat-item">Time of Day slider + Lock toggle</div>
+              <div class="feat-item">Gravity slider (0–400)</div>
+              <div class="feat-item">Instant Interact (0s hold)</div>
+              <div class="feat-item">TP-Walk speed multiplier</div>
+              <div class="feat-item">Flight (WASD + Space + Shift)</div>
+              <div class="feat-item">Noclip</div>
+              <div class="feat-item">Anti-Void</div>
+              <div class="feat-item">🚂 Train arrival HUD + notify</div>
+              <div class="feat-item">🏚️ Mansion open/closed HUD + notify</div>
               <div class="feat-item">Horse Turn Speed slider</div>
               <div class="feat-item">Horse Whip (auto follow)</div>
+            </div></div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="accordionToggle(this)">
+              <div class="feat-btn-left"><div class="feat-icon">⭐</div><span class="feat-name">AutoFarm</span></div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content"><div class="feat-content-inner">
+              <div class="feat-item">Auto teleport to mansion items</div>
+              <div class="feat-item">Picks up all 8 tracked item types</div>
+              <div class="feat-item">Auto-sells at OutlawGeneralStore</div>
+              <div class="feat-item">Configurable inventory slot limit</div>
+              <div class="feat-item">Noclip while farming</div>
+              <div class="feat-item">Proximity prompt fire (FirePromptOn)</div>
+              <div class="feat-item">On-screen farm status HUD</div>
+              <div class="feat-item">Step-walk + surface detection</div>
+            </div></div>
+          </div>
+
+          <div class="feat-group">
+            <button class="feat-btn" onclick="accordionToggle(this)">
+              <div class="feat-btn-left"><div class="feat-icon">👕</div><span class="feat-name">Appearance</span></div>
+              <span class="feat-arrow">&#9658;</span>
+            </button>
+            <div class="feat-content"><div class="feat-content-inner">
+              <div class="feat-item">In-game Avatar Editor (Clothing, Scales, Colors, Import)</div>
+              <div class="feat-item">Steal any player's avatar by User ID</div>
+              <div class="feat-item">Reset to your own avatar</div>
+              <div class="feat-item">Gun part colours + materials (4 slots)</div>
               <div class="feat-item">Bullet Trail colour picker</div>
+              <div class="feat-item">Mesh / Texture Spoofer</div>
+              <div class="feat-item">Horse body/eyes/mane/saddle colour + material</div>
+              <div class="feat-item">13 material options (Neon, ForceField…)</div>
               <div class="feat-item">GUI Theme switcher (9 themes)</div>
             </div></div>
           </div>
 
           <div class="feat-group">
             <button class="feat-btn" onclick="accordionToggle(this)">
-              <div class="feat-btn-left"><div class="feat-icon">&#11088;</div><span class="feat-name">AutoFarm</span></div>
+              <div class="feat-btn-left"><div class="feat-icon">⚙️</div><span class="feat-name">Misc / Utility</span></div>
               <span class="feat-arrow">&#9658;</span>
             </button>
             <div class="feat-content"><div class="feat-content-inner">
-              <div class="feat-item">Auto teleport to mansion items</div>
-              <div class="feat-item">Picks up: Skulls, Crowns, Keys, Jewels, Gems</div>
-              <div class="feat-item">Auto sells at OutlawGeneralStore when full</div>
-              <div class="feat-item">Configurable inventory slot limit</div>
-              <div class="feat-item">Noclip while farming</div>
-              <div class="feat-item">On-screen farm status HUD</div>
-              <div class="feat-item">Proximity prompt fire (FirePromptOn)</div>
-            </div></div>
-          </div>
-
-          <div class="feat-group">
-            <button class="feat-btn" onclick="accordionToggle(this)">
-              <div class="feat-btn-left"><div class="feat-icon">&#128014;</div><span class="feat-name">Appearance</span></div>
-              <span class="feat-arrow">&#9658;</span>
-            </button>
-            <div class="feat-content"><div class="feat-content-inner">
-              <div class="feat-item">Body colour &amp; material</div>
-              <div class="feat-item">Eyes colour &amp; material</div>
-              <div class="feat-item">Mane colour &amp; material</div>
-              <div class="feat-item">Saddle colour &amp; material</div>
-              <div class="feat-item">Auto-detects your horse by owner</div>
-              <div class="feat-item">Refresh button + respawn re-link</div>
-              <div class="feat-item">13 material options (Neon, ForceField...)</div>
+              <div class="feat-item">Config save / load / delete (JSON)</div>
+              <div class="feat-item">Script Executor (URL + raw Lua)</div>
+              <div class="feat-item">Load Dex Explorer</div>
+              <div class="feat-item">Load Infinite Yield</div>
+              <div class="feat-item">Rejoin Same Server</div>
+              <div class="feat-item">Server Hop (random public server)</div>
+              <div class="feat-item">Server Snipe (follow target player)</div>
+              <div class="feat-item">Anti-AFK (VirtualUser)</div>
+              <div class="feat-item">Fake Lag / Server Desync</div>
+              <div class="feat-item">Remote Spy (FireServer / InvokeServer)</div>
+              <div class="feat-item">Remote Firewall (block by name)</div>
+              <div class="feat-item">Camera FOV override + Max Zoom</div>
             </div></div>
           </div>
 
@@ -877,7 +1061,7 @@
       <div class="dl-panel a3">
         <div class="dl-label">&#9670; Get it now &#9670;</div>
         <div class="dl-title">Copy script</div>
-        <div class="dl-note">No key system &mdash; inject &amp; execute</div>
+        <div class="dl-note">The key is Mai</div>
         <button id="dlBtn" class="dl-btn" onclick="copyScript()">
           <span id="dlText">&#9776; Copy Loadstring</span>
         </button>
@@ -888,10 +1072,9 @@
       <div class="panel a4">
         <div class="panel-header"><span class="panel-title">Stack</span></div>
         <div style="padding:1rem 1.4rem;display:flex;flex-wrap:wrap;gap:0.2rem;">
-          <span class="stack-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-plain.svg" style="width:13px;height:13px;" alt=""> Lua / Luau</span>
-          <span class="stack-pill">&#127918; Roblox API</span>
-          <span class="stack-pill">&#128375; Velocity</span>
-          <span class="stack-pill">&#128295; Matcha</span>
+          <span class="stack-pill">🌙 Lua / Luau</span>
+          <span class="stack-pill">🖼️ Rayfield UI</span>
+          <span class="stack-pill">🔑 Key System </span>
         </div>
       </div>
 
@@ -903,9 +1086,7 @@
   </footer>
 
   <script>
-    /* ════════════════════════════════════════
-       GUI STATE
-    ════════════════════════════════════════ */
+    /* ════ GUI STATE ════ */
     const guiState = {};
     let activeCount = 0;
 
@@ -916,43 +1097,39 @@
         document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
         document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-        if (btn.dataset.tab === 'visuals') setTimeout(drawESP, 50);
-        if (btn.dataset.tab === 'combat')  setTimeout(drawFOV, 50);
+        const t = btn.dataset.tab;
+        if (t === 'visuals') setTimeout(drawESP, 50);
+        if (t === 'combat')  setTimeout(drawFOV, 50);
+        if (t === 'world')   setTimeout(drawShader, 50);
       });
     });
 
-    /* ── GUI TOGGLE ── */
+    /* ── TOGGLE ── */
     function guiToggle(checkbox, name) {
       const on = checkbox.checked;
       guiState[name] = on;
       const row = document.getElementById('ctrl-' + name);
       if (row) row.classList.toggle('active-on', on);
-
       activeCount = Object.values(guiState).filter(Boolean).length;
       document.getElementById('statusRight').textContent = activeCount + ' active';
       document.getElementById('statusText').textContent = (on ? '✅ ' : '❌ ') + name + ' ' + (on ? 'enabled' : 'disabled');
-
       if (name === 'AutoFarm') {
         const fs = document.getElementById('farmStatus');
-        fs.textContent = on ? '📦 Farm running...' : '⏳ AutoFarm is off';
+        fs.textContent = on ? '📦 Farm running... [0/24]' : '⏳ AutoFarm is off';
         fs.style.color  = on ? '#22d88f' : '';
       }
-      if (name === 'RemoteSpy') {
-        document.getElementById('remoteLog').style.display = on ? 'block' : 'none';
-      }
-
       guiNotify('BabyBound', name + ' ' + (on ? 'enabled' : 'disabled'), on ? '#22d88f' : '#ff4466');
     }
 
     /* ── SLIDER ── */
     function sliderUpdate(key, val, suffix) {
       const el = document.getElementById('val-' + key);
-      if (el) el.textContent = parseFloat(val).toFixed(key === 'HitboxSize' ? 1 : 0) + suffix;
+      if (el) el.textContent = parseFloat(val).toFixed(key === 'HitboxSize' || key === 'HitboxSizeP' || key === 'TPWalkSpeed' ? 1 : 0) + suffix;
     }
 
     function updateTimeOfDay(val) {
       const h = Math.floor(val);
-      const m = val % 1 === 0.5 ? '30' : '00';
+      const m = (val % 1 === 0.5) ? '30' : '00';
       document.getElementById('val-TimeOfDay').textContent = h + ':' + m;
     }
 
@@ -964,32 +1141,26 @@
       if (accentColor) el.style.borderLeftColor = accentColor;
       el.innerHTML = `<div class="notif-title">${title}</div><div class="notif-body">${body}</div>`;
       container.appendChild(el);
-      setTimeout(() => {
-        el.classList.add('out');
-        setTimeout(() => el.remove(), 300);
-      }, 2500);
+      setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 300); }, 2500);
     }
 
     /* ── THEME ── */
     const themes = {
-      Default:   { accent:'#7c5cfc', accent2:'#a78bfa', bg:'#0c0c10', surface:'#13131a' },
-      AmberGlow: { accent:'#f59e0b', accent2:'#fcd34d', bg:'#0e0a00', surface:'#1a1200' },
-      Amethyst:  { accent:'#9b4dca', accent2:'#c084fc', bg:'#0d0810', surface:'#180d1e' },
-      Bloom:     { accent:'#ec4899', accent2:'#f9a8d4', bg:'#100810', surface:'#1a0f1a' },
-      DarkBlue:  { accent:'#3b82f6', accent2:'#93c5fd', bg:'#08080f', surface:'#0f1020' },
-      Green:     { accent:'#22c55e', accent2:'#86efac', bg:'#080f08', surface:'#0f1a0f' },
-      Light:     { accent:'#6366f1', accent2:'#818cf8', bg:'#f1f2f7', surface:'#ffffff' },
-      Ocean:     { accent:'#06b6d4', accent2:'#67e8f9', bg:'#08100f', surface:'#0f1a1e' },
-      Serenity:  { accent:'#8b5cf6', accent2:'#c4b5fd', bg:'#09090f', surface:'#12121c' },
+      Default:   { accent:'#7c5cfc', accent2:'#a78bfa' },
+      AmberGlow: { accent:'#f59e0b', accent2:'#fcd34d' },
+      Amethyst:  { accent:'#9b4dca', accent2:'#c084fc' },
+      Bloom:     { accent:'#ec4899', accent2:'#f9a8d4' },
+      DarkBlue:  { accent:'#3b82f6', accent2:'#93c5fd' },
+      Green:     { accent:'#22c55e', accent2:'#86efac' },
+      Light:     { accent:'#6366f1', accent2:'#818cf8' },
+      Ocean:     { accent:'#06b6d4', accent2:'#67e8f9' },
+      Serenity:  { accent:'#8b5cf6', accent2:'#c4b5fd' },
     };
-
     function changeTheme(name) {
       const t = themes[name] || themes.Default;
       const r = document.documentElement;
       r.style.setProperty('--accent',      t.accent);
       r.style.setProperty('--accent2',     t.accent2);
-      r.style.setProperty('--bg',          t.bg);
-      r.style.setProperty('--surface',     t.surface);
       r.style.setProperty('--accent-glow', t.accent + '33');
       r.style.setProperty('--toggle-on',   t.accent);
       guiNotify('Theme', 'Switched to ' + name);
@@ -1002,28 +1173,21 @@
       const isOpen  = content.style.maxHeight;
       document.querySelectorAll('.feat-content').forEach(c => c.style.maxHeight = null);
       document.querySelectorAll('.feat-arrow').forEach(a => a.classList.remove('open'));
-      if (!isOpen) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        arrow.classList.add('open');
-      }
+      if (!isOpen) { content.style.maxHeight = content.scrollHeight + 'px'; arrow.classList.add('open'); }
     }
 
-    /* ── COPY SCRIPT ── */
+    /* ── COPY ── */
     function copyScript() {
       const script = `loadstring(game:HttpGet('https://raw.githubusercontent.com/diddenbludden/babybound/refs/heads/main/babybound.lua'))()`;
       navigator.clipboard.writeText(script).then(() => {
-        const btn  = document.getElementById('dlBtn');
+        const btn = document.getElementById('dlBtn');
         const text = document.getElementById('dlText');
         const stat = document.getElementById('dlStatus');
-        text.textContent     = '✓ Copied!';
-        stat.textContent     = 'Paste into your executor and run.';
-        stat.style.display   = 'block';
-        btn.style.opacity    = '0.7';
-        setTimeout(() => {
-          text.textContent   = '☰ Copy Loadstring';
-          stat.style.display = 'none';
-          btn.style.opacity  = '1';
-        }, 2500);
+        text.textContent   = '✓ Copied!';
+        stat.textContent   = 'Paste into your executor and run.';
+        stat.style.display = 'block';
+        btn.style.opacity  = '0.7';
+        setTimeout(() => { text.textContent = '☰ Copy Loadstring'; stat.style.display = 'none'; btn.style.opacity = '1'; }, 2500);
       });
     }
 
@@ -1031,143 +1195,152 @@
     function drawFOV() {
       const canvas = document.getElementById('fovCanvas');
       if (!canvas) return;
-      const parent = canvas.parentElement;
-      canvas.width  = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
+      const p = canvas.parentElement;
+      canvas.width = p.offsetWidth; canvas.height = p.offsetHeight;
       const ctx = canvas.getContext('2d');
-      const cx = canvas.width / 2, cy = canvas.height / 2;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
-      for (let x = 0; x < canvas.width; x += 20) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke(); }
-      for (let y = 0; y < canvas.height; y += 20) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke(); }
-
-      ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(cx-6,cy); ctx.lineTo(cx+6,cy); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(cx,cy-6); ctx.lineTo(cx,cy+6); ctx.stroke();
-
+      const cx = canvas.width/2, cy = canvas.height/2;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.strokeStyle='rgba(255,255,255,0.04)'; ctx.lineWidth=1;
+      for(let x=0;x<canvas.width;x+=20){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+      for(let y=0;y<canvas.height;y+=20){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+      ctx.strokeStyle='rgba(255,255,255,0.3)'; ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(cx-6,cy);ctx.lineTo(cx+6,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(cx,cy-6);ctx.lineTo(cx,cy+6);ctx.stroke();
       const showFOV = document.getElementById('showFOVToggle')?.checked;
       if (showFOV) {
-        const r = parseInt(document.getElementById('fovSlider')?.value || 150) * (canvas.width / 400);
-        const grd = ctx.createRadialGradient(cx,cy,r*0.8,cx,cy,r);
-        grd.addColorStop(0,'rgba(124,92,252,0)');
-        grd.addColorStop(1,'rgba(124,92,252,0.05)');
-        ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
-        ctx.fillStyle = grd; ctx.fill();
-        ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
-        ctx.strokeStyle = 'rgba(124,92,252,0.8)'; ctx.lineWidth = 1.5;
-        ctx.setLineDash([4,3]); ctx.stroke(); ctx.setLineDash([]);
+        const r = parseInt(document.getElementById('fovSlider')?.value||150)*(canvas.width/800);
+        const grd=ctx.createRadialGradient(cx,cy,r*0.8,cx,cy,r);
+        grd.addColorStop(0,'rgba(124,92,252,0)');grd.addColorStop(1,'rgba(124,92,252,0.05)');
+        ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();
+        ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
+        ctx.strokeStyle='rgba(124,92,252,0.8)';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.stroke();ctx.setLineDash([]);
       }
     }
 
-    /* ── ESP CANVAS ── */
-    let rainbowHue = 0;
-    function getRainbow() {
-      const r = Math.sin(rainbowHue)*127+128;
-      const g = Math.sin(rainbowHue+2.094)*127+128;
-      const b = Math.sin(rainbowHue+4.189)*127+128;
-      return `rgb(${Math.floor(r)},${Math.floor(g)},${Math.floor(b)})`;
+    /* ── SHADER CANVAS ── */
+    function drawShader() {
+      const canvas = document.getElementById('shaderCanvas');
+      if (!canvas) return;
+      const p = canvas.parentElement;
+      canvas.width = p.offsetWidth; canvas.height = p.offsetHeight;
+      const ctx = canvas.getContext('2d');
+      const enabled = document.getElementById('t-Shaders')?.checked;
+      if (!enabled) {
+        const g = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+        g.addColorStop(0,'#121220');g.addColorStop(1,'#0a0a18');
+        ctx.fillStyle=g;ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle='rgba(120,120,140,0.5)';ctx.font='10px JetBrains Mono,monospace';
+        ctx.fillText('Shaders OFF',8,canvas.height-8);
+        return;
+      }
+      // Day scene
+      const sky = ctx.createLinearGradient(0,0,0,canvas.height);
+      sky.addColorStop(0,'#87ceeb');sky.addColorStop(0.5,'#d4a96a');sky.addColorStop(1,'#5a4020');
+      ctx.fillStyle=sky;ctx.fillRect(0,0,canvas.width,canvas.height);
+      // Sun bloom
+      const sunX=canvas.width*0.75, sunY=canvas.height*0.25;
+      const sg=ctx.createRadialGradient(sunX,sunY,0,sunX,sunY,60);
+      sg.addColorStop(0,'rgba(255,240,180,0.9)');sg.addColorStop(0.3,'rgba(255,200,80,0.4)');sg.addColorStop(1,'rgba(255,180,0,0)');
+      ctx.fillStyle=sg;ctx.beginPath();ctx.arc(sunX,sunY,60,0,Math.PI*2);ctx.fill();
+      // Sun rays
+      ctx.save();ctx.translate(sunX,sunY);ctx.globalAlpha=0.15;
+      for(let i=0;i<12;i++){ctx.rotate(Math.PI*2/12);ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(80,0);ctx.strokeStyle='#ffe080';ctx.lineWidth=4;ctx.stroke();}
+      ctx.restore();ctx.globalAlpha=1;
+      // Ground
+      const gr=ctx.createLinearGradient(0,canvas.height*0.6,0,canvas.height);
+      gr.addColorStop(0,'#4a6820');gr.addColorStop(1,'#2a3a10');
+      ctx.fillStyle=gr;ctx.fillRect(0,canvas.height*0.65,canvas.width,canvas.height);
+      // Color correction overlay
+      ctx.fillStyle='rgba(255,240,200,0.08)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='bold 9px JetBrains Mono,monospace';
+      ctx.fillText('Enhanced Shaders ON',6,canvas.height-7);
     }
+
+    /* ── ESP CANVAS ── */
+    let rainbowHue=0;
+    function getRainbow(){const r=Math.sin(rainbowHue)*127+128,g=Math.sin(rainbowHue+2.094)*127+128,b=Math.sin(rainbowHue+4.189)*127+128;return`rgb(${Math.floor(r)},${Math.floor(g)},${Math.floor(b)})`;}
 
     function drawESP() {
       const canvas = document.getElementById('espCanvas');
       if (!canvas) return;
-      const parent = canvas.parentElement;
-      canvas.width  = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0a0a12'; ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#1a1a28'; ctx.fillRect(0,canvas.height*0.6,canvas.width,canvas.height);
-      ctx.fillStyle = '#111120'; ctx.fillRect(20,20,60,70);
-      ctx.fillStyle = '#0d0d1a'; ctx.fillRect(canvas.width-80,10,70,80);
+      const p = canvas.parentElement;
+      canvas.width=p.offsetWidth;canvas.height=p.offsetHeight;
+      const ctx=canvas.getContext('2d');
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#0a0a12';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#1a1a28';ctx.fillRect(0,canvas.height*0.6,canvas.width,canvas.height);
 
-      const players = [
-        { x:90,  y:30, w:28, h:52, hp:80,  name:'Player1' },
-        { x:200, y:20, w:24, h:44, hp:45,  name:'Player2' },
-        { x:310, y:25, w:26, h:48, hp:100, name:'Player3' },
-      ];
+      const players=[{x:70,y:25,w:26,h:50,hp:80,name:'Player1'},{x:185,y:18,w:22,h:44,hp:45,name:'Player2'},{x:295,y:22,w:24,h:48,hp:100,name:'Player3'}];
+      const boxOn=document.getElementById('t-BoxESP')?.checked;
+      const skelOn=document.getElementById('t-SkeletonESP')?.checked;
+      const hdotOn=document.getElementById('t-HeadDot')?.checked;
+      const tracerOn=document.getElementById('t-Tracer')?.checked;
+      const nameOn=document.getElementById('t-NameESP')?.checked;
+      const hpOn=document.getElementById('t-HealthESP')?.checked;
+      const chamsOn=document.getElementById('t-Chams')?.checked;
+      const rbBox=document.getElementById('t-RainbowBox')?.checked;
+      const rbSkel=document.getElementById('t-RainbowSkel')?.checked;
+      const rbHead=document.getElementById('t-RainbowHead')?.checked;
+      const rbTracer=document.getElementById('t-RainbowTracer')?.checked;
+      const rbName=document.getElementById('t-RainbowName')?.checked;
+      const boxCol=document.getElementById('c-BoxColor')?.value||'#ff0044';
+      const skelCol=document.getElementById('c-SkelColor')?.value||'#ffffff';
+      const headCol=document.getElementById('c-HeadColor')?.value||'#ff00ff';
+      const tracerCol=document.getElementById('c-TracerColor')?.value||'#00ffff';
+      const CH_X=canvas.width/2,CH_Y=canvas.height;
 
-      const boxOn    = document.getElementById('t-BoxESP')?.checked;
-      const skelOn   = document.getElementById('t-SkeletonESP')?.checked;
-      const hdotOn   = document.getElementById('t-HeadDot')?.checked;
-      const tracerOn = document.getElementById('t-Tracer')?.checked;
-      const nameOn   = document.getElementById('t-NameESP')?.checked;
-      const hpOn     = document.getElementById('t-HealthESP')?.checked;
-      const chamsOn  = document.getElementById('t-Chams')?.checked;
-      const rbBox    = document.getElementById('t-RainbowBox')?.checked;
-      const rbSkel   = document.getElementById('t-RainbowSkel')?.checked;
-      const rbHead   = document.getElementById('t-RainbowHead')?.checked;
-      const rbTracer = document.getElementById('t-RainbowTracer')?.checked;
-      const rbName   = document.getElementById('t-RainbowName')?.checked;
-      const boxCol    = document.getElementById('c-BoxColor')?.value    || '#ff0044';
-      const skelCol   = document.getElementById('c-SkelColor')?.value   || '#ffffff';
-      const headCol   = document.getElementById('c-HeadColor')?.value   || '#ff00ff';
-      const tracerCol = document.getElementById('c-TracerColor')?.value || '#00ffff';
-      const CH_X = canvas.width / 2, CH_Y = canvas.height;
-
-      players.forEach(p => {
-        const bx = p.x, by = p.y, bw = p.w, bh = p.h, cx2 = bx + bw/2;
-        if (chamsOn) { ctx.fillStyle='rgba(124,92,252,0.18)'; ctx.fillRect(bx,by,bw,bh); }
-        if (tracerOn) {
-          ctx.beginPath(); ctx.moveTo(CH_X,CH_Y); ctx.lineTo(cx2,by+bh);
-          ctx.strokeStyle = (rbTracer ? getRainbow() : tracerCol)+'cc'; ctx.lineWidth=1; ctx.stroke();
-        }
-        ctx.fillStyle='rgba(255,255,255,0.06)'; ctx.fillRect(bx+4,by+12,bw-8,bh-12);
-        ctx.beginPath(); ctx.arc(cx2,by+8,8,0,Math.PI*2); ctx.fill();
-        if (boxOn) {
-          ctx.strokeStyle=rbBox?getRainbow():boxCol; ctx.lineWidth=1.5; ctx.strokeRect(bx,by,bw,bh);
-        }
-        if (skelOn) {
-          const sc=(rbSkel?getRainbow():skelCol)+'cc'; ctx.strokeStyle=sc; ctx.lineWidth=1;
-          ctx.beginPath(); ctx.moveTo(cx2,by+16); ctx.lineTo(cx2,by+22); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(cx2,by+22); ctx.lineTo(cx2,by+38); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(bx+4,by+24); ctx.lineTo(cx2,by+22); ctx.lineTo(bx+bw-4,by+24); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(bx+2,by+36); ctx.lineTo(bx+4,by+24); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(bx+bw-2,by+36); ctx.lineTo(bx+bw-4,by+24); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(bx+8,by+bh); ctx.lineTo(cx2,by+38); ctx.lineTo(bx+bw-8,by+bh); ctx.stroke();
-        }
-        if (hdotOn) {
-          ctx.beginPath(); ctx.arc(cx2,by+8,4,0,Math.PI*2);
-          ctx.fillStyle=rbHead?getRainbow():headCol; ctx.fill();
-          ctx.strokeStyle='#000'; ctx.lineWidth=0.5; ctx.stroke();
-        }
-        if (hpOn) {
-          const barH=bh, filled=barH*(p.hp/100);
-          const hpColor=p.hp>60?'#22d88f':p.hp>30?'#f5c542':'#ff4466';
-          ctx.fillStyle='rgba(0,0,0,0.5)'; ctx.fillRect(bx-5,by,3,barH);
-          ctx.fillStyle=hpColor; ctx.fillRect(bx-5,by+barH-filled,3,filled);
-        }
-        if (nameOn) {
-          const nc=rbName?getRainbow():'#e8e6f0';
-          ctx.font='bold 9px JetBrains Mono,monospace'; ctx.textAlign='center';
-          ctx.fillStyle='rgba(0,0,0,0.6)'; ctx.fillText(p.name,cx2+1,by-3);
-          ctx.fillStyle=nc; ctx.fillText(p.name,cx2,by-4);
-        }
+      players.forEach(p=>{
+        const bx=p.x,by=p.y,bw=p.w,bh=p.h,cx2=bx+bw/2;
+        if(chamsOn){ctx.fillStyle='rgba(124,92,252,0.18)';ctx.fillRect(bx,by,bw,bh);}
+        if(tracerOn){ctx.beginPath();ctx.moveTo(CH_X,CH_Y);ctx.lineTo(cx2,by+bh);ctx.strokeStyle=(rbTracer?getRainbow():tracerCol)+'cc';ctx.lineWidth=1;ctx.stroke();}
+        ctx.fillStyle='rgba(255,255,255,0.06)';ctx.fillRect(bx+4,by+12,bw-8,bh-12);
+        ctx.beginPath();ctx.arc(cx2,by+8,8,0,Math.PI*2);ctx.fill();
+        if(boxOn){ctx.strokeStyle=rbBox?getRainbow():boxCol;ctx.lineWidth=1.5;ctx.strokeRect(bx,by,bw,bh);}
+        if(skelOn){const sc=(rbSkel?getRainbow():skelCol)+'cc';ctx.strokeStyle=sc;ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(cx2,by+16);ctx.lineTo(cx2,by+22);ctx.stroke();
+          ctx.beginPath();ctx.moveTo(cx2,by+22);ctx.lineTo(cx2,by+38);ctx.stroke();
+          ctx.beginPath();ctx.moveTo(bx+4,by+24);ctx.lineTo(cx2,by+22);ctx.lineTo(bx+bw-4,by+24);ctx.stroke();
+          ctx.beginPath();ctx.moveTo(bx+2,by+36);ctx.lineTo(bx+4,by+24);ctx.stroke();
+          ctx.beginPath();ctx.moveTo(bx+bw-2,by+36);ctx.lineTo(bx+bw-4,by+24);ctx.stroke();
+          ctx.beginPath();ctx.moveTo(bx+8,by+bh);ctx.lineTo(cx2,by+38);ctx.lineTo(bx+bw-8,by+bh);ctx.stroke();}
+        if(hdotOn){ctx.beginPath();ctx.arc(cx2,by+8,4,0,Math.PI*2);ctx.fillStyle=rbHead?getRainbow():headCol;ctx.fill();ctx.strokeStyle='#000';ctx.lineWidth=0.5;ctx.stroke();}
+        if(hpOn){const barH=bh,filled=barH*(p.hp/100);const hpColor=p.hp>60?'#22d88f':p.hp>30?'#f5c542':'#ff4466';ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(bx-5,by,3,barH);ctx.fillStyle=hpColor;ctx.fillRect(bx-5,by+barH-filled,3,filled);}
+        if(nameOn){const nc=rbName?getRainbow():'#e8e6f0';ctx.font='bold 9px JetBrains Mono,monospace';ctx.textAlign='center';ctx.fillStyle='rgba(0,0,0,0.6)';ctx.fillText(p.name,cx2+1,by-3);ctx.fillStyle=nc;ctx.fillText(p.name,cx2,by-4);}
       });
       ctx.textAlign='left';
     }
 
+    /* ── HUD SIMULATION ── */
+    let trainActive=true, trainTime=0, mansionOpen=false, mansionTime=0;
+    setInterval(()=>{
+      trainTime++;mansionTime++;
+      const fmt=s=>{const m=Math.floor(s/60),sec=s%60;return m+':'+(sec<10?'0':'')+sec;};
+      const tEl=document.getElementById('trainHud');
+      const mEl=document.getElementById('mansionHud');
+      if(tEl){tEl.textContent=trainActive?`🚂 Train active: ${fmt(trainTime)}`:`🚂 Train gone: ${fmt(trainTime)} ago`;tEl.style.color=trainActive?'#ff5050':'#9090a0';}
+      if(mEl){mEl.textContent=mansionOpen?`🏚️ Mansion OPEN: ${fmt(mansionTime)}`:`🏚️ Mansion closed: ${fmt(mansionTime)} ago`;mEl.style.color=mansionOpen?'#64ff8c':'#82a9ff';}
+    },1000);
+    // Randomly flip states for demo
+    setInterval(()=>{if(Math.random()<0.1){trainActive=!trainActive;trainTime=0;}if(Math.random()<0.07){mansionOpen=!mansionOpen;mansionTime=0;}},3000);
+
     /* ── ANIMATION LOOP ── */
-    function animLoop() {
-      rainbowHue += 0.04;
-      const activeTab = document.querySelector('.tab-btn.active')?.dataset.tab;
-      if (activeTab === 'visuals') {
-        const anyRainbow = ['RainbowBox','RainbowSkel','RainbowHead','RainbowTracer','RainbowName']
-          .some(k => document.getElementById('t-'+k)?.checked);
-        if (anyRainbow) drawESP();
+    function animLoop(){
+      rainbowHue+=0.04;
+      const activeTab=document.querySelector('.tab-btn.active')?.dataset.tab;
+      if(activeTab==='visuals'){
+        const anyRainbow=['RainbowBox','RainbowSkel','RainbowHead','RainbowTracer','RainbowName'].some(k=>document.getElementById('t-'+k)?.checked);
+        if(anyRainbow) drawESP();
       }
       requestAnimationFrame(animLoop);
     }
     requestAnimationFrame(animLoop);
 
     /* ── INIT ── */
-    window.addEventListener('load', () => {
-      drawFOV();
-      drawESP();
-      guiNotify('BabyBound', 'Loaded! v2 — All features active.', '#7c5cfc');
+    window.addEventListener('load',()=>{
+      drawFOV();drawESP();drawShader();
+      guiNotify('BabyBound','Loaded! v2 — All features active.','#7c5cfc');
     });
-    window.addEventListener('resize', () => { drawFOV(); drawESP(); });
+    window.addEventListener('resize',()=>{drawFOV();drawESP();drawShader();});
   </script>
 
 </body>
