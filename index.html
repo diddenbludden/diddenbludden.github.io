@@ -207,54 +207,62 @@
 
         <script>
           (async () => {
-            const STATUS_COLORS = {
-              online: '#23d160',
-              idle: '#f5a623',
-              dnd: '#f04747',
-              offline: '#747f8d'
-            };
-            const STATUS_LABELS = {
-              online: 'Online',
-              idle: 'Idle',
-              dnd: 'Do Not Disturb',
-              offline: 'Offline'
-            };
+            const STATUS_COLORS = { online:'#23d160', idle:'#f5a623', dnd:'#f04747', offline:'#747f8d' };
+            const STATUS_GLOWS  = { online:'rgba(35,209,96,0.65)', idle:'rgba(245,166,35,0.65)', dnd:'rgba(240,71,71,0.65)', offline:'transparent' };
+            const STATUS_LABELS = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
+
             try {
-              const res = await fetch('https://api.lanyard.rest/v1/users/1064531083607150723');
-              const { data } = await res.json();
+              const res  = await fetch('https://api.lanyard.rest/v1/users/1064531083607150723');
+              const json = await res.json();
+              const data = json.data;
               if (!data) throw new Error('no data');
 
-              const { discord_user, discord_status, activities, discord_avatar } = data;
+              const { discord_user, discord_status, activities, spotify, listening_to_spotify } = data;
 
-              // Avatar
-              if (discord_avatar) {
-                document.getElementById('dc-avatar').src =
-                  `https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_avatar}.${discord_avatar.startsWith('a_') ? 'gif' : 'webp'}?size=128`;
+              // ── Avatar ──
+              const avatarEl = document.getElementById('dc-avatar');
+              const hash = discord_user.avatar;
+              if (hash) {
+                const ext = hash.startsWith('a_') ? 'gif' : 'png';
+                avatarEl.src = `https://cdn.discordapp.com/avatars/${discord_user.id}/${hash}.${ext}?size=128`;
               }
 
-              // Username
-              document.getElementById('dc-name').textContent =
-                discord_user.global_name || discord_user.username;
+              // ── Name ──
+              document.getElementById('dc-name').textContent = discord_user.global_name || discord_user.username;
 
-              // Status dot
-              const dot = document.getElementById('dc-status-dot');
-              dot.style.background = STATUS_COLORS[discord_status] || STATUS_COLORS.offline;
-              if (discord_status === 'online') {
-                dot.style.boxShadow = '0 0 6px 1px rgba(35,209,96,0.7)';
-              }
+              // ── Status dot ──
+              const dot    = document.getElementById('dc-status-dot');
+              const status = discord_status || 'offline';
+              dot.style.background  = STATUS_COLORS[status];
+              dot.style.boxShadow   = `0 0 7px 2px ${STATUS_GLOWS[status]}`;
 
-              // Activity
+              // ── Activity ──
               const customStatus = activities?.find(a => a.type === 4);
-              const game = activities?.find(a => a.type === 0);
-              let activityText = STATUS_LABELS[discord_status] || 'Offline';
-              if (customStatus?.state) {
-                activityText = customStatus.state;
-              } else if (game?.name) {
-                activityText = `Playing ${game.name}`;
+              const game         = activities?.find(a => a.type === 0);
+
+              if (listening_to_spotify && spotify) {
+                // Show album art + song
+                document.getElementById('dc-activity').innerHTML =
+                  `<span style="color:#1DB954">♫</span> ${spotify.song} <span style="opacity:.5">— ${spotify.artist}</span>`;
+
+                // Swap avatar for album art
+                if (spotify.album_art_url) {
+                  avatarEl.src = spotify.album_art_url;
+                  avatarEl.style.borderRadius = '8px';
+                  // ring it green
+                  avatarEl.className = avatarEl.className.replace('ring-white/10','ring-[#1DB954]/60');
+                }
+              } else if (customStatus) {
+                const emoji = customStatus.emoji?.name ? customStatus.emoji.name + ' ' : '';
+                document.getElementById('dc-activity').textContent = (emoji + (customStatus.state || '')).trim() || STATUS_LABELS[status];
+              } else if (game) {
+                document.getElementById('dc-activity').textContent = `🎮 ${game.name}`;
+              } else {
+                document.getElementById('dc-activity').textContent = STATUS_LABELS[status];
               }
-              document.getElementById('dc-activity').textContent = activityText;
 
             } catch (e) {
+              console.error('[Lanyard]', e);
               document.getElementById('dc-name').textContent = '80he';
               document.getElementById('dc-activity').textContent = 'Click to message on Discord';
             }
